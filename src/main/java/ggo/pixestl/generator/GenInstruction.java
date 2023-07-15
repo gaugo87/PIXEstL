@@ -21,6 +21,8 @@ public class GenInstruction
 	public static final int DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER=8;
 	public static final int DEFAULT_VALUE_LAYER_THREAD_MAX_NUMBER=0;
 	public static final int DEFAULT_VALUE_ROW_THREAD_TIMEOUT=60;
+	public static final boolean DEFAULT_VALUE_COLOR_LAYER=true;
+	public static final boolean DEFAULT_VALUE_TEXTURE_LAYER=true;
 	
 	
 	protected String srcImagePath;
@@ -49,8 +51,8 @@ public class GenInstruction
 	protected int layerThreadTimeout=DEFAULT_VALUE_LAYER_THREAD_TIMEOUT; //s
 	protected int rowThreadTimeout=DEFAULT_VALUE_ROW_THREAD_TIMEOUT; //s
 	
-	protected boolean noColorLayer=false;
-	protected boolean noTextureLayer=false;
+	protected boolean colorLayer=DEFAULT_VALUE_COLOR_LAYER;
+	protected boolean textureLayer=DEFAULT_VALUE_TEXTURE_LAYER;
 		
 	public GenInstruction()
 	{
@@ -111,11 +113,11 @@ public class GenInstruction
 	public int getRowThreadTimeout() {
 		return rowThreadTimeout;
 	}
-	public boolean isNoColorLayer() {
-		return noColorLayer;
+	public boolean isColorLayer() {
+		return colorLayer;
 	}
-	public boolean isNoTextureLayer() {
-		return noTextureLayer;
+	public boolean isTextureLayer() {
+		return textureLayer;
 	}
 
 	

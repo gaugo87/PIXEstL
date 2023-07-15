@@ -27,8 +27,8 @@ For example for lithophanes, in addition to the usual Cyan, Magenta, and Yellow 
 -T,--rowThreadTimeout <arg>       Timeout for row threads (second). Default : 60
 -tW,--texturePixelWidth <arg>     Width of texture pixels (mm). Default: 0.25
 -w,--destImageWidth <arg>         Width of the destination image (mm).
--z,--noColorLayer <arg>           Color layers will not generated
--Z,--noTextureLayer <arg>         Texture layers will not generated
+-z,--ColorLayer <arg>             Color layers will generate or not. Default : true
+-Z,--TextureLayer <arg>           Texture layers will generate or not. Default : true
 ```
 
 ## Examples of results
@@ -57,13 +57,13 @@ java -jar pixelSTL.jar -p filament-palette.json -w 130 -M 1.4 -i rainbow_infinit
 
 ### Lithophane with only texture layer
 ``` 
-java -jar pixelSTL.jar -p filament-palette.json -M 3 -w 150 -z true -i tsunami_Hokusai.jpg
+java -jar pixelSTL.jar -p filament-palette.json -M 3 -w 150 -z false -i tsunami_Hokusai.jpg
 ``` 
 <img src="attachment/tsunami_hokusai.jpg" width="750" alt="tsunami_hokusai"/>
 
 ### Pixel Art image (with only color layers + FULL colors)
 ``` 
-java -jar pixelSTL.jar -p filament-palette.json -w 200 -c 8 -F FULL -Z true -cW 1 -l 2 -f 3 -i tsunami_Hokusai.jpg
+java -jar pixelSTL.jar -p filament-palette.json -w 200 -c 8 -F FULL -Z false -cW 1 -l 2 -f 3 -i tsunami_Hokusai.jpg
 ```
 
 ## The palette

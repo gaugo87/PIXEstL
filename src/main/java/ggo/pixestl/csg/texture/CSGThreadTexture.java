@@ -56,7 +56,7 @@ public class CSGThreadTexture implements Runnable
         }        
         csg = CSG.fromPolygons(polys);
        
-        if (csgWorkData.getGenInstruction().isNoColorLayer())
+        if (csgWorkData.getGenInstruction().isColorLayer())
         {
         	GenInstruction g = csgWorkData.getGenInstruction();
         	

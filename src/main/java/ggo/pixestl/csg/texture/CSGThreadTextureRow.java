@@ -35,7 +35,7 @@ public class CSGThreadTextureRow implements Runnable
 		double diffW=0;
 		double diffH=0;
 		
-		if (csgInstruction.getGenInstruction().isNoColorLayer())
+		if (csgInstruction.getGenInstruction().isColorLayer())
 		{
 			diffW= pixelWidth*width - csgInstruction.getColorImage().getWidth()*csgInstruction.getGenInstruction().getColorPixelWidth();
 			diffH= pixelWidth*height - csgInstruction.getColorImage().getHeight()*csgInstruction.getGenInstruction().getColorPixelWidth();

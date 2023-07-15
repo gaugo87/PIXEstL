@@ -45,8 +45,8 @@ public class CommandArgsParser extends GenInstruction {
 		optArgList.add(new Option("N", "rowThreadMaxNumber", true, "Number of threads for rows generation.\nDefault: "+GenInstruction.DEFAULT_VALUE_LAYER_THREAD_MAX_NUMBER));
 		optArgList.add(new Option("T", "rowThreadTimeout", true, "Timeout for row threads (second).\nDefault : "+GenInstruction.DEFAULT_VALUE_ROW_THREAD_TIMEOUT));
 		
-		optArgList.add(new Option("z", "noColorLayer", true, "Color layers will not generated"));
-		optArgList.add(new Option("Z", "noTextureLayer", true, "Texture layers will not generated"));
+		optArgList.add(new Option("z", "colorLayer", true, "Color layers will generate or not. Default : "+DEFAULT_VALUE_COLOR_LAYER));
+		optArgList.add(new Option("Z", "textureLayer", true, "Texture layers will generate or not. Default : "+DEFAULT_VALUE_TEXTURE_LAYER));
 		
 		
 		for(Option o : reqArgList)
@@ -183,12 +183,12 @@ public class CommandArgsParser extends GenInstruction {
 		this.rowThreadTimeout = Integer.parseInt(rowThreadTimeoutString);
 	}
 
-	public void setNoColorLayerString(String noColorLayerString) {
-		this.noColorLayer = Boolean.parseBoolean(noColorLayerString);
+	public void setColorLayerString(String colorLayerString) {
+		this.colorLayer = Boolean.parseBoolean(colorLayerString);
 	}
 
-	public void setNoTextureLayerString(String noTextureLayerString) {
-		this.noTextureLayer = Boolean.parseBoolean(noTextureLayerString);
+	public void setTextureLayerString(String textureLayerString) {
+		this.textureLayer = Boolean.parseBoolean(textureLayerString);
 	}
 	
 }

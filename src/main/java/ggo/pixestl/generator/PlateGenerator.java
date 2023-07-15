@@ -41,12 +41,12 @@ public class PlateGenerator {
 		BufferedImage quantizedColorImage = null;
 		BufferedImage textureImage = null;
 		
-		if (genInstruction.isNoColorLayer())
+		if (genInstruction.isColorLayer())
 		{
 			BufferedImage colorImage=ImageUtil.resizeImage(image, genInstruction.getDestImageWidth(),genInstruction.getColorPixelWidth());			
 			quantizedColorImage = palette.quantizeColors(colorImage);
 		}
-		if (!genInstruction.isNoTextureLayer()) textureImage=ImageUtil.convertToBlackAndWhite(ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(),genInstruction.getTexturePixelWidth()));
+		if (genInstruction.isTextureLayer()) textureImage=ImageUtil.convertToBlackAndWhite(ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(),genInstruction.getTexturePixelWidth()));
 		
 		
 		BufferedImage flipColorImage =quantizedColorImage!=null?ImageUtil.flipImage(quantizedColorImage):null;
