@@ -1,0 +1,423 @@
+{
+  "#0086D6":
+  {
+	"name": "Cyan[PLA Basic]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 202.4,
+      "S": 95,
+      "L": 48
+    },
+	"4": {
+      "H": 202.4,
+      "S": 95,
+      "L": 52.5
+    },
+    "3": {
+      "H": 202.4,
+      "S": 95,
+      "L": 61.8
+    },
+    "2": {
+      "H": 202.4,
+      "S": 95,
+      "L": 69.6
+    },
+    "1": {
+      "H": 202.4,
+      "S": 81,
+      "L": 79
+    }}
+  },
+  "#8BD5EE": {
+    "name": "Matte Ice Blue[PLA Matte]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 198,
+      "S": 77.6,
+      "L": 56.3
+    },
+	"4": {
+      "H": 198,
+      "S": 81.5,
+      "L": 61.8
+    },
+    "3": {
+      "H": 198,
+      "S": 77,
+      "L": 65.9
+    },
+    "2": {
+      "H": 198,
+      "S": 64.2,
+      "L": 73.7
+    },
+    "1": {
+      "H": 200,
+      "S": 50,
+      "L": 82.5
+    }}
+  },
+  "#E4BDD0":
+  {
+	"name": "Matte Sakura Pink[PLA Matte]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 354,
+      "S": 59,
+      "L": 71
+    },
+	"4": {
+      "H": 356,
+      "S": 57,
+      "L": 70
+    },
+    "3": {
+      "H": 347,
+      "S": 48,
+      "L": 75
+    },
+    "2": {
+      "H": 340,
+      "S": 29,
+      "L": 76
+    },
+    "1": {
+      "H": 323,
+      "S": 16,
+      "L": 80
+    }}
+  },
+  "#EC008C":
+  {
+	"name": "Magenta[PLA Basic]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 324.4,
+      "S": 75,
+      "L": 55
+    },
+	"4": {
+      "H": 324.4,
+      "S": 75,
+      "L": 57.3
+    },
+    "3": {
+      "H": 324.4,
+      "S": 75,
+      "L": 59.8
+    },
+    "2": {
+      "H": 324.4,
+      "S": 69,
+      "L": 65.9
+    },
+    "1": {
+      "H": 324.4,
+      "S": 52,
+      "L": 74.7
+    }}
+  },
+  "#FCE300":
+  {
+	"name": "Yellow[PLA Basic]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 54,
+      "S": 80,
+      "L": 52
+    },
+	"4": {
+      "H": 54,
+      "S": 75,
+      "L": 52
+    },
+    "3": {
+      "H": 54,
+      "S": 75,
+      "L": 54.1
+    },
+    "2": {
+      "H": 54,
+      "S": 75,
+      "L": 59.2
+    },
+    "1": {
+      "H": 61.8,
+      "S": 73.9,
+      "L": 70
+    }}
+  },
+  "#FFE34F":
+  {
+	"name": "Pale yellow[OVERTURE]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 52.9,
+      "S": 73.7,
+      "L": 50.8
+    },
+	"4": {
+      "H": 52.9,
+      "S": 78.7,
+      "L": 53.9
+    },
+    "3": {
+      "H": 53.8,
+      "S": 81.3,
+      "L": 55.9
+    },
+    "2": {
+      "H": 56.9,
+      "S": 75.4,
+      "L": 60.2
+    },
+    "1": {
+      "H": 61.2,
+      "S": 63.9,
+      "L": 70.2
+    }}
+  },
+  "#FFFFFF":
+  {
+	"name": "White[PLA Basic]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 0,
+      "S": 0,
+      "L": 92
+    },
+	"4": {
+      "H": 0,
+      "S": 0,
+      "L": 92
+    },
+    "3": {
+      "H": 0,
+      "S": 0,
+      "L": 92
+    },
+    "2": {
+      "H": 0,
+      "S": 0,
+      "L": 92
+    },
+    "1": {
+      "H": 0,
+      "S": 0,
+      "L": 92
+    }}
+  },
+  "#00000":
+  {
+	"name": "Black[PLA Basic]",
+	"active": true,
+	"layers": {
+    "5": {
+      "H": 0,
+      "S": 0,
+      "L": 20
+    }}
+  },
+  "#A6A9AA": {
+    "name": "Silver[PLA Basic]",
+	"active": false,
+	"layers": {
+	"5": {
+      "H": 206.7,
+      "S": 4.1,
+      "L": 42.5
+    },
+	"4": {
+      "H": 212.6,
+      "S": 6.2,
+      "L": 52.4
+    },
+    "3": {
+      "H": 212.7,
+      "S": 5.9,
+      "L": 63.7
+    },
+    "2": {
+      "H": 206.7,
+      "S": 5.8,
+      "L": 69.6
+    },
+    "1": {
+      "H": 206.7,
+      "S": 7.8,
+      "L": 77.5
+    }}
+  },
+  "#61C680": {
+    "name": "Matte Grass Green[PLA Matte]",
+	"active": true,
+  },
+  "#D3B7A7": {
+    "name": "Matte Latte Brown[PLA Matte]",
+	"active": true,
+  },
+  "#AE96D4": {
+    "name": "Matte Lilac Violet[PLA Matte]",
+	"active": true,
+  },
+  "#F99963": {
+    "name": "Matte Mandarin Orange[PLA Matte]",
+	"active": true,
+  },
+  "#0078BF": {
+    "name": "Matte Marine Blue[PLA Matte]",
+	"active": true,
+  },
+  "#DE4343": {
+    "name": "Matte Scarlet Red matte[PLA Matte]",
+	"active": true,
+  },
+  "#FFE17F": {
+    "name": "Matte Lemon Yellow[PLA Matte]",
+	"active": true,
+  },
+  "#9B9EA0": {
+    "name": "Matte Ash Grey[PLA Matte]",
+	"active": true,
+  },
+  "#68724D": {
+    "name": "Matte Dark Green[PLA Matte]",
+	"active": true,
+  },
+  "#BB3D43": {
+    "name": "Matte Dark Red[PLA Matte]",
+	"active": true,
+  },
+  "#375172": {
+    "name": "Matte Dark Blue[PLA Matte]",
+	"active": true,
+  },
+  "#7D6556": {
+    "name": "Matte Dark Brown[PLA Matte]",
+	"active": true,
+  },
+  "#6E3FA3": {
+    "name": "Purple[PLA Basic]",
+	"active": true,
+  },
+  "#E4BD64": {
+    "name": "Gold[PLA Basic]",
+	"active": true,
+  },
+  "#84754E": {
+    "name": "Bronze[PLA Basic]",
+	"active": true,
+  },
+  "#00AE42": {
+    "name": "Bamboo Green[PLA Basic]",
+	"active": true,
+  },
+  "#00358E": {
+    "name": "Blue[PLA Basic]",
+	"active": true,
+  },
+  "#C00D1E": {
+    "name": "Red[PLA Basic]",
+	"active": true,
+  },
+  "#005F61": {
+    "name": "Green[PLA Basic]",
+	"active": true,
+  },
+  "#FF6A13": {
+    "name": "Orange[PLA Basic]",
+	"active": true,
+  },
+  "#E7CEB5": {
+    "name": "Beige[PLA Basic]",
+	"active": true,
+  },
+  "#8E9089": {
+    "name": "Grey[PLA Basic]",
+	"active": true,
+  },
+  "#4C5F71": {
+    "name": "Blue Grey[PLA Basic]",
+	"active": true,
+  },
+  "#FF5869": {
+    "name": "Pink[PLA Basic]",
+	"active": true,
+  },
+  "#9D432C": {
+    "name": "Brown[PLA Basic]",
+	"active": true,
+  },
+  "#FFC600": {
+    "name": "Gold[PLA Silk]",
+	"active": true,
+  },
+  "#97999B": {
+    "name": "Silver[PLA Silk]",
+	"active": true,
+  },
+  "#5E4B3C": {
+    "name": "Copper[PLA Silk]",
+	"active": true,
+  },
+  "#147BD1": {
+    "name": "Blue[PLA Silk]",
+	"active": true,
+  },
+  "#B39B84": {
+    "name": "Iridium Gold Metallic[PLA Metal]",
+	"active": true,
+  },
+  "#39699E": {
+    "name": "Cobalt Blue Metallic[PLA Metal]",
+	"active": true,
+  },
+  "#1D7C6A": {
+    "name": "Oxide Green Metallic[PLA Metal]",
+	"active": true,
+  },
+  "#AA6443": {
+    "name": "Copper Brown Metallic[PLA Metal]",
+	"active": true,
+  },
+  "#43403D": {
+    "name": "Iron Grey Metallic[PLA Metal]",
+	"active": true,
+  },
+  "#3F5443": {
+    "name": "Alpine Green Sparkle[PLA Sparkle]",
+	"active": false,
+  },
+  "#792B36": {
+    "name": "Crimson Red Sparkle[PLA Sparkle]",
+	"active": true,
+  },
+  "#2D2B28": {
+    "name": "Onyx Black Sparkle[PLA Sparkle]",
+	"active": true,
+  },
+  "#6667AB": {
+    "name": "Lavender Blue[PLA Tough]",
+	"active": true,
+  },
+  "#00482B": {
+    "name": "Pine Green[PLA Tough]",
+	"active": true,
+  },
+  "#25282A": {
+    "name": "Black[PLA Tough]",
+	"active": false,
+  },
+  "#515A6C": {
+    "name": "Grey[PLA Tough]",
+	"active": false,
+  }
+}
