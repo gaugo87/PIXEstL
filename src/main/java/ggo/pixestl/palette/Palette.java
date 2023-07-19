@@ -27,7 +27,7 @@ public class Palette
 	private Map<String,String> hexCodesMap;
 	List<String> sortedHexcodeList = new ArrayList<>();
 	
-	public Palette(String path,GenInstruction genInstruction) throws IOException, CloneNotSupportedException {
+	public Palette(String path,GenInstruction genInstruction) throws IOException {
 		this.genInstruction=genInstruction;
 		
 		quantizedColors = new HashMap<>();
@@ -83,7 +83,7 @@ public class Palette
         for (ColorCombi c : colorCombiList)
         {
         	if (c.getTotalLayers() != genInstruction.getColorPixelLayerNumber()) continue;
-        	quantizedColors.put(c.getColor(),c);
+        	quantizedColors.put(c.getColor(genInstruction),c);
         }
         
         sortedHexcodeList.addAll(hexCodesMap.keySet());
@@ -91,7 +91,7 @@ public class Palette
         
 	}
 		
-	private List<ColorCombi> computeCombination(ColorCombi cC,List<ColorLayer> colorLayerList) throws CloneNotSupportedException {
+	private List<ColorCombi> computeCombination(ColorCombi cC,List<ColorLayer> colorLayerList) {
 		List<ColorCombi> colorCombiList = new ArrayList<>();
 		for (int i=0; i<colorLayerList.size();i++)
         {

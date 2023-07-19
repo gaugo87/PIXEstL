@@ -256,12 +256,42 @@
       "L": 77.5
     }}
   },
-  "#61C680": {
-    "name": "Matte Grass Green[PLA Matte]",
-	"active": true,
+  "#E7CEB5": {
+    "name": "Beige[PLA Basic]",
+	"active": false,
+	"layers": {
+	"5": {
+      "H": 30,
+      "S": 30,
+      "L": 65
+    },
+	"4": {
+      "H": 30,
+      "S": 25,
+      "L": 71
+    },
+    "3": {
+      "H": 30,
+      "S": 15,
+      "L": 73
+    },
+    "2": {
+      "H": 30,
+      "S": 11,
+      "L": 75
+    },
+    "1": {
+      "H": 30,
+      "S": 5,
+      "L": 80
+    }}
   },
   "#D3B7A7": {
     "name": "Matte Latte Brown[PLA Matte]",
+	"active": true,
+  },
+  "#61C680": {
+    "name": "Matte Grass Green[PLA Matte]",
 	"active": true,
   },
   "#AE96D4": {
@@ -334,10 +364,6 @@
   },
   "#FF6A13": {
     "name": "Orange[PLA Basic]",
-	"active": true,
-  },
-  "#E7CEB5": {
-    "name": "Beige[PLA Basic]",
 	"active": true,
   },
   "#8E9089": {

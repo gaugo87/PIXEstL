@@ -42,8 +42,9 @@ public class CommandArgsParser extends GenInstruction {
 		optArgList.add(new Option("tW", "texturePixelWidth", true, "Width of texture pixels (cm).\nDefault: "+GenInstruction.DEFAULT_VALUE_TEXTURE_PIXEL_WIDTH));
 		optArgList.add(new Option("n", "layerThreadMaxNumber", true, "Maximum number of threads for layers generation.\nDefault: 1 by STL layer"));
 		optArgList.add(new Option("t", "layerThreadTimeout", true, "Timeout for layer threads (second).\nDefault: "+GenInstruction.DEFAULT_VALUE_LAYER_THREAD_TIMEOUT));
-		optArgList.add(new Option("N", "rowThreadMaxNumber", true, "Number of threads for rows generation.\nDefault: "+GenInstruction.DEFAULT_VALUE_LAYER_THREAD_MAX_NUMBER));
+		optArgList.add(new Option("N", "rowThreadMaxNumber", true, "Number of threads for rows generation.\nDefault: "+GenInstruction.DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER));
 		optArgList.add(new Option("T", "rowThreadTimeout", true, "Timeout for row threads (second).\nDefault : "+GenInstruction.DEFAULT_VALUE_ROW_THREAD_TIMEOUT));
+		optArgList.add(new Option("X", "debug", false, "debug mode"));
 		
 		optArgList.add(new Option("z", "colorLayer", true, "Color layers will generate or not. Default : "+DEFAULT_VALUE_COLOR_LAYER));
 		optArgList.add(new Option("Z", "textureLayer", true, "Texture layers will generate or not. Default : "+DEFAULT_VALUE_TEXTURE_LAYER));
@@ -96,6 +97,7 @@ public class CommandArgsParser extends GenInstruction {
         		method.invoke(genInstruction,line.getOptionValues(optionName));
         	}
         }
+		genInstruction.setDebug(line.hasOption("X"));
         if (genInstruction.getDestZipPath() == null)
         {
 	        String outName=genInstruction.getSrcImagePath();

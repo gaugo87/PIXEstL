@@ -138,6 +138,14 @@ public class ColorUtil {
 
         return new double[]{c, m, y, k};
     }
+
+    public static String colorToHexCode(Color color) {
+        int red = color.getRed();
+        int green = color.getGreen();
+        int blue = color.getBlue();
+
+        return String.format("#%02X%02X%02X", red, green, blue);
+    }
     
     
 

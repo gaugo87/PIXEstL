@@ -35,7 +35,7 @@ For example for lithophanes, in addition to the usual Cyan, Magenta, and Yellow 
 
 ### Color lithophanes
 ``` 
-java -jar pixelSTL.jar -p palette-0.1mm.json -w 130 -i Cafe_Terrace_at_Night.jpg Cafe_Terrace_at_Night.jpg
+java -jar pixelSTL.jar -p palette-0.1mm.json -w 130 -i Cafe_Terrace_at_Night.jpg
 ```
 <img src="attachment/Terrace_at_Night.jpg" width="500" alt="Terrace_at_Night"/>
 
@@ -61,10 +61,19 @@ java -jar pixelSTL.jar -p filament-palette.json -M 3 -w 150 -z false -i tsunami_
 ``` 
 <img src="attachment/tsunami_hokusai.jpg" width="750" alt="tsunami_hokusai"/>
 
+### Lithophane of a face with underexposure and overexposure to light
+``` 
+java -jar pixelSTL.jar -p filament-palette-0.10mm-custom.json -w 100 -i Marilyn.jpg
+```
+<img src="attachment/marilyn.jpg" width="500" alt="marilyn.jpg"/>
+
 ### Pixel Art image (with only color layers + FULL colors)
 ``` 
-java -jar pixelSTL.jar -p filament-palette.json -w 200 -c 8 -F FULL -Z false -cW 1 -l 2 -f 3 -i tsunami_Hokusai.jpg
+java -jar pixelSTL.jar -p filament-palette-0.10mm.json -w 200 -c 8 -F FULL -Z false -cW 2 -l 2 -f 1 -i tsunami_Hokusai.jpg
 ```
+<img src="attachment/tsunami_hokusai_pixel.jpg" width="750" alt="tsunami_hokusai_pixel"/>
+
+
 
 ## The palette
 
@@ -126,6 +135,15 @@ Palette composed of BambuLab filaments, with 0.10mm layers :  [filament-palette-
       "L": 69.6
     },
 ```
+## Print settings
+
+With Bambu Studio
+- Nozzle : 0.2mm (or 0.4mm)
+- Layer height : 0.10mm (or 0.12mm)
+- Infill density : 100%
+
+
+
 ## Binary generation
 ### Prerequisites
 - Java JDK (ex: https://www.oracle.com/fr/java/technologies/downloads/)

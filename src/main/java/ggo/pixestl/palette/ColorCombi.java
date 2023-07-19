@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
+import ggo.pixestl.generator.GenInstruction;
 import ggo.pixestl.util.ColorUtil;
 
 public class ColorCombi {
@@ -21,10 +22,10 @@ public class ColorCombi {
 		layers.put(colorLayer.getHexCode(),colorLayer);		
 	}
 	
-	public ColorCombi combineLithoColorLayer(ColorLayer colorLayer2,int nbLayerMax) throws CloneNotSupportedException {
+	public ColorCombi combineLithoColorLayer(ColorLayer colorLayer2,int nbLayerMax) {
 		if (layers.containsKey(colorLayer2.getHexCode())) return null;
 		if (getTotalLayers()+colorLayer2.getLayer() > nbLayerMax) return null;
-		ColorCombi c = clone();
+		ColorCombi c = duplicate();
 		c.layers.put(colorLayer2.getHexCode(),colorLayer2);
 		return c;				
 	}
@@ -44,25 +45,28 @@ public class ColorCombi {
 		return totalLayers;
 	}
 	
-	public Color getColor()
+	public Color getColor(GenInstruction genInstruction)
 	{
 		double c=0,m=0,y=0,k=0;
 		for (ColorLayer lithoColorLayer : layers.values())
 		{
-			/*System.out.print(lithoColorLayer.getHexCode()+"["+lithoColorLayer.getLayer()+"]");*/
+			if (genInstruction.isDebug()) {
+				System.out.print(lithoColorLayer.getHexCode() + "[" + lithoColorLayer.getLayer() + "]");
+			}
 			c+=lithoColorLayer.getC();	
 			m+=lithoColorLayer.getM();
 			y+=lithoColorLayer.getY();
 			k+=lithoColorLayer.getK();
 		}
 		Color color = ColorUtil.cmykToColor(c<1?c:1, m<1?m:1, y<1?y:1, k<1?k:1);
-		/*String string = ;
-		System.out.println("="+ColorUtil.colorToHexCode(color));*/
+		if (genInstruction.isDebug()) {
+			System.out.println("=" + ColorUtil.colorToHexCode(color));
+		}
 		return color;
 		
 	}
 
-	protected ColorCombi clone() throws CloneNotSupportedException {
+	protected ColorCombi duplicate() {
 		ColorCombi c = new ColorCombi();
 		c.layers.putAll(this.layers);
 		return c;		

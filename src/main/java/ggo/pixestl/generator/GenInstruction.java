@@ -53,6 +53,8 @@ public class GenInstruction
 	
 	protected boolean colorLayer=DEFAULT_VALUE_COLOR_LAYER;
 	protected boolean textureLayer=DEFAULT_VALUE_TEXTURE_LAYER;
+
+	protected boolean debug = false;
 		
 	public GenInstruction()
 	{
@@ -119,6 +121,8 @@ public class GenInstruction
 	public boolean isTextureLayer() {
 		return textureLayer;
 	}
+	public void setDebug(boolean debug) { this.debug=debug; }
+	public boolean isDebug() { return debug; }
 
 	
 }
