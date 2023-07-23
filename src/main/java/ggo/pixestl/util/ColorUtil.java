@@ -1,6 +1,8 @@
 package ggo.pixestl.util;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ColorUtil {
@@ -122,8 +124,34 @@ public class ColorUtil {
         } else {
             hue = (60 * ((r - g) / (max - min)) + 240) % 360;
         }
-
         return new double[]{hue, saturation * 100, luminosity * 100};
+    }
+
+    public static boolean transparentPixel(BufferedImage image, int x, int y)
+    {
+        if (x<0 || x >= image.getWidth()) return true;
+        if (y<0 || y >= image.getHeight()) return true;
+
+        int pixel = image.getRGB(x, y);
+        return (pixel & 0xFF000000) == 0;
+    }
+
+    public static boolean hasATransparentPixelAsNeighbor(BufferedImage image, int x, int y) {
+        List<int[]> neighborList = new ArrayList<>();
+        neighborList.add(new int [] {x,y+1});
+        neighborList.add(new int [] {x+1,y});
+        neighborList.add(new int [] {x,y-1});
+        neighborList.add(new int [] {x-1,y});
+
+        for (int[] neighborPixel : neighborList)
+        {
+            int xN = neighborPixel[0];
+            int yN = neighborPixel[1];
+            if (xN<0 || xN> image.getWidth()-1
+                    || yN<0 || yN > image.getHeight()-1) return true;
+            if (ColorUtil.transparentPixel(image,xN,yN)) return true;
+        }
+        return false;
     }
 
     public static double[] colorToCMYK(Color color) {

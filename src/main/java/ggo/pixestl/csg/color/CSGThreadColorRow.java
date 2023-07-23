@@ -1,35 +1,33 @@
 package ggo.pixestl.csg.color;
 
 import java.awt.Color;
-
+import java.awt.image.BufferedImage;
 import eu.mihosoft.jcsg.CSG;
 import eu.mihosoft.jcsg.Cube;
 import eu.mihosoft.vvecmath.Transform;
-import ggo.pixestl.csg.CSGWorkData;
+import ggo.pixestl.csg.CSGThreadRow;
 import ggo.pixestl.palette.ColorCombi;
+import ggo.pixestl.util.ColorUtil;
+import ggo.pixestl.util.ImageUtil;
 
-public class CSGThreadColorRow implements Runnable
-{	
-	final private CSGWorkData csgWorkData;
-    final private int y;
-    private CSG csg;
-    
-	
-    public CSGThreadColorRow(CSGWorkData data,int y)
-	{
-		this.csgWorkData=data;
-		this.y=y;
-		
-		csg=null;		
-	}
-    
+public class CSGThreadColorRow extends CSGThreadRow
+{
 	public void run()
 	{
 		int width = csgWorkData.getColorImage().getWidth();
+
+        BufferedImage img= csgWorkData.getColorImage();
+        boolean transparentMode = ImageUtil.hasATransparentPixel(img);
   	        	
         for (int x = 0; x < width; x++)
         {
-            int pixel = csgWorkData.getColorImage().getRGB(x,y);
+            if (ColorUtil.transparentPixel(img,x,y)) continue;
+            if (transparentMode) {
+                if (ColorUtil.hasATransparentPixelAsNeighbor(img, x, y)) continue;
+            }
+
+            int pixel = img.getRGB(x,y);
+
             Color pixelColor = new Color(pixel);
             
             ColorCombi colorCombi = csgWorkData.getPalette().getColorCombi(pixelColor);
@@ -51,12 +49,10 @@ public class CSGThreadColorRow implements Runnable
             		.translateY(y*pixelWidth)
             		.translateZ(curPixelHeightAdjust);
             square = square.transformed(transform);
-            csg=csg==null?square:csg.dumbUnion(square);
+            polygonList.addAll(square.getPolygons());
         }
         
 	}
 
-	public CSG getCsg() {
-		return csg;
-	}
+
 }

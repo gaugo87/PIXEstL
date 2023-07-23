@@ -28,18 +28,18 @@ public class CommandArgsParser extends GenInstruction {
 	
 		reqArgList.add(new Option("i", "srcImagePath", true, "Path to the source image."));
 		reqArgList.add(new Option("p", "palettePath", true, "Path to the palette file."));
-		reqArgList.add(new Option("w", "destImageWidth", true, "Width of the destination image (cm)."));
+		reqArgList.add(new Option("w", "destImageWidth", true, "Width of the destination image (mm)."));
 
 		optArgList.add(new Option("o", "destZipPath", true, "Destination ZIP file path.\nDefault: <-image>.zip"));
 		optArgList.add(new Option("c", "colorNumber", true, "Maximum number of color number.\nDefault: no limits"));
 		optArgList.add(new Option("F", "pixelCreationMethod", true, "Method for pixel creation [ADDITIVE,FULL].\nDefault: "+GenInstruction.ADD));
-		optArgList.add(new Option("f", "plateThickness", true, "Thickness of the plate (cm).\nDefault: "+GenInstruction.DEFAULT_VALUE_PLATE_THICKNESS));
+		optArgList.add(new Option("f", "plateThickness", true, "Thickness of the plate (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_PLATE_THICKNESS));
 		optArgList.add(new Option("l", "colorLayerNumber", true, "Number of color pixel layers.\nDefault: "+GenInstruction.DEFAULT_VALUE_COLOR_LAYER_NUMBER));
-		optArgList.add(new Option("t", "colorPixelLayerThickness", true, "Thickness of each color pixel layer (cm).\nDefault: "+GenInstruction.DEFAULT_VALUE_COLOR_PIXEL_LAYER_THICKNESS));
-		optArgList.add(new Option("cW", "colorPixelWidth", true, "Width of color pixels (cm).\nDefault: "+GenInstruction.DEFAULT_VALUE_COLOR_PIXEL_WIDTH));
-		optArgList.add(new Option("M", "textureMaxThickness", true, "Maximum thickness of the texture (cm).\nDefault: "+GenInstruction.DEFAULT_VALUE_TEXTURE_MAX_THICKNESS));
-		optArgList.add(new Option("m", "textureMinThickness", true, "Minimum  thickness of the texture (cm).\nDefault: "+GenInstruction.DEFAULT_VALUE_TEXTURE_MIN_THICKNESS));
-		optArgList.add(new Option("tW", "texturePixelWidth", true, "Width of texture pixels (cm).\nDefault: "+GenInstruction.DEFAULT_VALUE_TEXTURE_PIXEL_WIDTH));
+		optArgList.add(new Option("b", "colorPixelLayerThickness", true, "Thickness of each color pixel layer (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_COLOR_PIXEL_LAYER_THICKNESS));
+		optArgList.add(new Option("cW", "colorPixelWidth", true, "Width of color pixels (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_COLOR_PIXEL_WIDTH));
+		optArgList.add(new Option("M", "textureMaxThickness", true, "Maximum thickness of the texture (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_TEXTURE_MAX_THICKNESS));
+		optArgList.add(new Option("m", "textureMinThickness", true, "Minimum  thickness of the texture (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_TEXTURE_MIN_THICKNESS));
+		optArgList.add(new Option("tW", "texturePixelWidth", true, "Width of texture pixels (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_TEXTURE_PIXEL_WIDTH));
 		optArgList.add(new Option("n", "layerThreadMaxNumber", true, "Maximum number of threads for layers generation.\nDefault: 1 by STL layer"));
 		optArgList.add(new Option("t", "layerThreadTimeout", true, "Timeout for layer threads (second).\nDefault: "+GenInstruction.DEFAULT_VALUE_LAYER_THREAD_TIMEOUT));
 		optArgList.add(new Option("N", "rowThreadMaxNumber", true, "Number of threads for rows generation.\nDefault: "+GenInstruction.DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER));

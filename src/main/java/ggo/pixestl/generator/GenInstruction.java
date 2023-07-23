@@ -5,8 +5,8 @@ public class GenInstruction
 	
 	
 	public enum PixelCreationMethod {ADDITIVE,FULL}
-	public static String ADD = "ADDITIVE";
-	public static String FULL = "FULL";
+	public static final String ADD = "ADDITIVE";
+	public static final String FULL = "FULL";
 	
 	
 

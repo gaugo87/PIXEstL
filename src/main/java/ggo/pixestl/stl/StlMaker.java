@@ -10,19 +10,25 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
 import ggo.pixestl.csg.CSGWorkData;
 import ggo.pixestl.csg.color.CSGThreadColor;
+import ggo.pixestl.csg.color.CSGThreadColorRow;
 import ggo.pixestl.csg.plate.CSGSupportPlate;
+import ggo.pixestl.csg.plate.CSGThreadSupport;
+import ggo.pixestl.csg.plate.CSGThreadSupportRow;
 import ggo.pixestl.csg.texture.CSGThreadTexture;
+import ggo.pixestl.csg.texture.CSGThreadTextureRow;
+import ggo.pixestl.csg.texture.CSGThreadTextureRowWithTransparency;
 import ggo.pixestl.generator.GenInstruction;
 import ggo.pixestl.palette.Palette;
+import ggo.pixestl.util.ImageUtil;
+
 public class StlMaker {
 
 	private final Palette palette;
 	private final BufferedImage colorImage;
 	private final BufferedImage texturedImage;
-	GenInstruction genInstruction;
+	final GenInstruction genInstruction;
 		
 	public StlMaker(BufferedImage colorImage,BufferedImage texturedImage,Palette palette,GenInstruction genInstruction)
 	{
@@ -44,17 +50,26 @@ public class StlMaker {
     	CSGSupportPlate csgPlate = null;
     	List<CSGThreadColor> csgThreadColors =new ArrayList<>();
     	CSGThreadTexture csgThreadTexture = null;
+		CSGThreadSupport csgSupportPlate = null;
+
     	
     	if (this.colorImage !=null)
     	{
-    		csgPlate = new CSGSupportPlate();
-    		csgPlate.generate(colorImage, genInstruction);
+			if (!ImageUtil.hasATransparentPixel(this.colorImage)) {
+				csgPlate = new CSGSupportPlate();
+				csgPlate.generate(colorImage, genInstruction);
+			}
+			else {
+				CSGWorkData csgWorkData =new CSGWorkData(colorImage,texturedImage,palette,"plate",null,genInstruction);
+				csgSupportPlate = new CSGThreadSupport(CSGThreadSupportRow.class,csgWorkData);
+				executorService.execute(csgSupportPlate);
+			}
     		
     		for (String hexCode : palette.getColorHexList())
     		{
     			String colorName = palette.getColorName(hexCode);
     			CSGWorkData csgWorkData =new CSGWorkData(colorImage,texturedImage,palette,colorName,hexCode,genInstruction);
-    			CSGThreadColor csgThreadColor = new CSGThreadColor(csgWorkData);
+    			CSGThreadColor csgThreadColor = new CSGThreadColor(CSGThreadColorRow.class,csgWorkData);
     			csgThreadColors.add(csgThreadColor);
     			executorService.execute(csgThreadColor);
     		}
@@ -67,7 +82,12 @@ public class StlMaker {
 			String whiteColor = colorList.get(colorList.size()-1);
 			
 			CSGWorkData csgWorkData =new CSGWorkData(colorImage,texturedImage,palette,palette.getColorName(whiteColor),whiteColor,genInstruction);
-			csgThreadTexture = new CSGThreadTexture(csgWorkData); 
+			if (ImageUtil.hasATransparentPixel(texturedImage)) {
+				csgThreadTexture = new CSGThreadTexture<CSGThreadTextureRowWithTransparency>(CSGThreadTextureRowWithTransparency.class, csgWorkData);
+			}
+			else {
+				csgThreadTexture = new CSGThreadTexture<CSGThreadTextureRow>(CSGThreadTextureRow.class,csgWorkData);
+			}
 			executorService.execute(csgThreadTexture);
 			
     	}		
@@ -102,6 +122,10 @@ public class StlMaker {
 			{
 				allComplete=false;
 			}
+			if (csgSupportPlate!=null && !csgSupportPlate.isAllComplete())
+			{
+				allComplete=false;
+			}
 			if (!allComplete)
 			{
 				System.err.println("GENERATION ABORTED");
@@ -117,13 +141,23 @@ public class StlMaker {
 		    zipOut.write(stlPlate,0,stlPlate.length);
 			zipOut.closeEntry();   		
 		}
+
+		if (csgSupportPlate != null)
+		{
+			String stlString=csgSupportPlate.writeSTLString();
+			ZipEntry zipEntry = new ZipEntry("layer-plate.stl");
+			zipOut.putNextEntry(zipEntry);
+			byte[] stl = stlString.getBytes();
+			zipOut.write(stl,0,stl.length);
+			zipOut.closeEntry();
+		}
 			
 
     	for (CSGThreadColor stlGeneration : csgThreadColors)
     	{
     		String stlString=stlGeneration.writeSTLString();
     		if (stlString == null) continue;
-    		String colorName=stlGeneration.getColorName();
+    		String colorName=stlGeneration.getThreadName();
     		ZipEntry zipEntry = new ZipEntry("layer-"+colorName+".stl");
     		zipOut.putNextEntry(zipEntry);
     		byte[] stl = stlString.getBytes();    		
@@ -134,7 +168,7 @@ public class StlMaker {
     	if (csgThreadTexture != null)
     	{
     		String stlString=csgThreadTexture.writeSTLString();
-        	ZipEntry  zipEntry = new ZipEntry("layer-texture-"+csgThreadTexture.getColorName()+".stl");
+        	ZipEntry  zipEntry = new ZipEntry("layer-texture-"+csgThreadTexture.getThreadName()+".stl");
     		zipOut.putNextEntry(zipEntry);		
     		byte[] stl = stlString.getBytes();		
     		zipOut.write(stl,0,stl.length);

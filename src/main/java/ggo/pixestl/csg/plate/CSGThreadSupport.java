@@ -1,21 +1,22 @@
-package ggo.pixestl.csg.color;
+package ggo.pixestl.csg.plate;
 
-import java.awt.image.BufferedImage;
 import ggo.pixestl.csg.CSGThread;
 import ggo.pixestl.csg.CSGWorkData;
+import java.awt.image.BufferedImage;
 
-public class CSGThreadColor extends CSGThread<CSGThreadColorRow>
+
+public class CSGThreadSupport extends CSGThread<CSGThreadSupportRow>
 {
-	public CSGThreadColor(Class c,CSGWorkData csgWorkData)
+	public CSGThreadSupport(Class c, CSGWorkData csgWorkData)
 	{
 		super(c,csgWorkData);
 	}
+
 	public void postProcessing()
 	{
-        //nothing
+		//nothing
 	}
 	public BufferedImage getImageToProcess() {
 		return csgWorkData.getColorImage();
 	}
-
 }

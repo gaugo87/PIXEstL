@@ -218,7 +218,7 @@
   "#00000":
   {
 	"name": "Black[PLA Basic]",
-	"active": true,
+	"active": false,
 	"layers": {
     "5": {
       "H": 0,
@@ -288,162 +288,162 @@
   },
   "#D3B7A7": {
     "name": "Matte Latte Brown[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#61C680": {
     "name": "Matte Grass Green[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#AE96D4": {
     "name": "Matte Lilac Violet[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#F99963": {
     "name": "Matte Mandarin Orange[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#0078BF": {
     "name": "Matte Marine Blue[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#DE4343": {
     "name": "Matte Scarlet Red matte[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#FFE17F": {
     "name": "Matte Lemon Yellow[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#9B9EA0": {
     "name": "Matte Ash Grey[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#68724D": {
     "name": "Matte Dark Green[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#BB3D43": {
     "name": "Matte Dark Red[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#375172": {
     "name": "Matte Dark Blue[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#7D6556": {
     "name": "Matte Dark Brown[PLA Matte]",
-	"active": true,
+	"active": true
   },
   "#6E3FA3": {
     "name": "Purple[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#E4BD64": {
     "name": "Gold[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#84754E": {
     "name": "Bronze[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#00AE42": {
     "name": "Bamboo Green[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#00358E": {
     "name": "Blue[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#C00D1E": {
     "name": "Red[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#005F61": {
     "name": "Green[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#FF6A13": {
     "name": "Orange[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#8E9089": {
     "name": "Grey[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#4C5F71": {
     "name": "Blue Grey[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#FF5869": {
     "name": "Pink[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#9D432C": {
     "name": "Brown[PLA Basic]",
-	"active": true,
+	"active": true
   },
   "#FFC600": {
     "name": "Gold[PLA Silk]",
-	"active": true,
+	"active": true
   },
   "#97999B": {
     "name": "Silver[PLA Silk]",
-	"active": true,
+	"active": true
   },
   "#5E4B3C": {
     "name": "Copper[PLA Silk]",
-	"active": true,
+	"active": true
   },
   "#147BD1": {
     "name": "Blue[PLA Silk]",
-	"active": true,
+	"active": true
   },
   "#B39B84": {
     "name": "Iridium Gold Metallic[PLA Metal]",
-	"active": true,
+	"active": true
   },
   "#39699E": {
     "name": "Cobalt Blue Metallic[PLA Metal]",
-	"active": true,
+	"active": true
   },
   "#1D7C6A": {
     "name": "Oxide Green Metallic[PLA Metal]",
-	"active": true,
+	"active": true
   },
   "#AA6443": {
     "name": "Copper Brown Metallic[PLA Metal]",
-	"active": true,
+	"active": true
   },
   "#43403D": {
     "name": "Iron Grey Metallic[PLA Metal]",
-	"active": true,
+	"active": true
   },
   "#3F5443": {
     "name": "Alpine Green Sparkle[PLA Sparkle]",
-	"active": false,
+	"active": false
   },
   "#792B36": {
     "name": "Crimson Red Sparkle[PLA Sparkle]",
-	"active": true,
+	"active": true
   },
   "#2D2B28": {
     "name": "Onyx Black Sparkle[PLA Sparkle]",
-	"active": true,
+	"active": true
   },
   "#6667AB": {
     "name": "Lavender Blue[PLA Tough]",
-	"active": true,
+	"active": true
   },
   "#00482B": {
     "name": "Pine Green[PLA Tough]",
-	"active": true,
+	"active": true
   },
   "#25282A": {
     "name": "Black[PLA Tough]",
-	"active": false,
+	"active": false
   },
   "#515A6C": {
     "name": "Grey[PLA Tough]",
-	"active": false,
+	"active": false
   }
 }

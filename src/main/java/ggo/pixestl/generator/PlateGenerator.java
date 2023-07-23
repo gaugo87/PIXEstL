@@ -48,7 +48,6 @@ public class PlateGenerator {
 		}
 		if (genInstruction.isTextureLayer()) textureImage=ImageUtil.convertToBlackAndWhite(ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(),genInstruction.getTexturePixelWidth()));
 		
-		
 		BufferedImage flipColorImage =quantizedColorImage!=null?ImageUtil.flipImage(quantizedColorImage):null;
 		BufferedImage flipTextureImage = textureImage!=null?ImageUtil.flipImage(textureImage):null;
 		StlMaker maker = new StlMaker(flipColorImage,flipTextureImage,palette,genInstruction);

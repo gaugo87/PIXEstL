@@ -20,12 +20,12 @@ public class Palette
 {
 	private int nbLayers;
 	
-	GenInstruction genInstruction;
+	final GenInstruction genInstruction;
 	
 	private Map<Color,ColorCombi> quantizedColors;
 	
 	private Map<String,String> hexCodesMap;
-	List<String> sortedHexcodeList = new ArrayList<>();
+	final List<String> sortedHexcodeList = new ArrayList<>();
 	
 	public Palette(String path,GenInstruction genInstruction) throws IOException {
 		this.genInstruction=genInstruction;
@@ -144,12 +144,17 @@ public class Palette
 		
 		List<Color> colors=getColors();
 
-		BufferedImage quantizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		BufferedImage quantizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
 		for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
 			{
+				if (ColorUtil.transparentPixel(image,x,y))
+				{
+					quantizedImage.setRGB(x, y,0x00000000 );
+					continue;
+				}
 				Color pixelColor = new Color(image.getRGB(x, y));
 				Color closestColor = ColorUtil.findClosestColor(pixelColor, colors);
 				quantizedImage.setRGB(x, y, closestColor.getRGB());

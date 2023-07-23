@@ -9,7 +9,7 @@ import ggo.pixestl.util.ColorUtil;
 
 public class ColorCombi {
 	
-	Map<String,ColorLayer> layers;
+	final Map<String,ColorLayer> layers;
 	
 	private ColorCombi()
 	{

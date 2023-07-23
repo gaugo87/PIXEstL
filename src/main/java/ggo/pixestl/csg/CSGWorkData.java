@@ -11,19 +11,17 @@ public class CSGWorkData
 	final private BufferedImage texturedImage;
 	final private Palette palette;
 	final private String hexCode;
-	final private String colorName;
-
-	
-	GenInstruction genInstruction;
+	final private String threadName;
+	final GenInstruction genInstruction;
 	
 
 	public CSGWorkData(BufferedImage colorImage,BufferedImage texturedImage,Palette palette,
-			String colorName,String hexCode,GenInstruction genInstruction)
+			String threadName,String hexCode,GenInstruction genInstruction)
 	{
 		this.colorImage=colorImage;
 		this.texturedImage=texturedImage;
 		this.palette=palette;
-		this.colorName=colorName;
+		this.threadName=threadName;
 		this.hexCode=hexCode;	
 		this.genInstruction=genInstruction;
 	}
@@ -44,8 +42,8 @@ public class CSGWorkData
 		return hexCode;
 	}
 
-	public String getColorName() {
-		return colorName;
+	public String getThreadName() {
+		return threadName;
 	}
 
 	public GenInstruction getGenInstruction() {
