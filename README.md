@@ -11,24 +11,27 @@ For example for lithophanes, in addition to the usual Cyan, Magenta, and Yellow 
 
 ## Usage
 ```usage: PIXEstL
--c,--colorNumber <arg>            Maximum number of color number. Default: no limits
--cW,--colorPixelWidth <arg>       Width of color pixels (mm). Default: 0.8
--F,--pixelCreationMethod <arg>    Method for pixel creation [ADDITIVE,FULL]. Default: ADDITIVE
--f,--plateThickness <arg>         Thickness of the plate (mm). Default: 0.2
--i,--srcImagePath <arg>           Path to the source image.
--l,--colorLayerNumber <arg>       Number of color pixel layers. Default: 5
--M,--textureMaxThickness <arg>    Maximum thickness of the texture (mm). Default: 2.5
--m,--textureMinThickness <arg>    Minimum  thickness of the texture (mm). Default: 0.2
--n,--layerThreadMaxNumber <arg>   Maximum number of threads for layers generation. Default: 1 by STL layer
--N,--rowThreadMaxNumber <arg>     Number of threads for rows genration. Default: 0
--o,--destZipPath <arg>            Destination ZIP file path. Default: <-image>.zip
--p,--palettePath <arg>            Path to the palette file.
--t,--layerThreadTimeout <arg>     Timeout for layer threads (second). Default: 120
--T,--rowThreadTimeout <arg>       Timeout for row threads (second). Default : 60
--tW,--texturePixelWidth <arg>     Width of texture pixels (mm). Default: 0.25
--w,--destImageWidth <arg>         Width of the destination image (mm).
--z,--ColorLayer <arg>             Color layers will generate or not. Default : true
--Z,--TextureLayer <arg>           Texture layers will generate or not. Default : true
+usage: PIXEstL
+ -b,--colorPixelLayerThickness <arg>   Thickness of each color pixel layer (mm). Default: 0.1
+ -c,--colorNumber <arg>                Maximum number of color number. Default: no limits
+ -cW,--colorPixelWidth <arg>           Width of color pixels (mm). Default: 0.8
+ -F,--pixelCreationMethod <arg>        Method for pixel creation [ADDITIVE,FULL]. Default: ADDITIVE
+ -f,--plateThickness <arg>             Thickness of the plate (mm). Default: 0.2
+ -i,--srcImagePath <arg>               Path to the source image.
+ -l,--colorLayerNumber <arg>           Number of color pixel layers. Default: 5
+ -M,--textureMaxThickness <arg>        Maximum thickness of the texture (mm). Default: 2.5
+ -m,--textureMinThickness <arg>        Minimum  thickness of the texture (mm). Default: 0.2
+ -n,--layerThreadMaxNumber <arg>       Maximum number of threads for layers generation. Default: 1 by STL layer
+ -N,--rowThreadMaxNumber <arg>         Number of threads for rows generation. Default: 8
+ -o,--destZipPath <arg>                Destination ZIP file path. Default: <-image>.zip
+ -p,--palettePath <arg>                Path to the palette file.
+ -t,--layerThreadTimeout <arg>         Timeout for layer threads (second). Default: 120
+ -T,--rowThreadTimeout <arg>           Timeout for row threads (second). Default : 60
+ -tW,--texturePixelWidth <arg>         Width of texture pixels (mm). Default: 0.25
+ -w,--destImageWidth <arg>             Width of the destination image (mm).
+ -X,--debug                            debug mode
+ -z,--colorLayer <arg>                 Color layers will generate or not. Default : true
+ -Z,--textureLayer <arg>               Texture layers will generate or not. Default : true
 ```
 
 ## Examples of results
@@ -66,6 +69,12 @@ java -jar pixelSTL.jar -p filament-palette.json -M 3 -w 150 -z false -i tsunami_
 java -jar pixelSTL.jar -p filament-palette-0.10mm-custom.json -w 100 -i Marilyn.jpg
 ```
 <img src="attachment/marilyn.jpg" width="500" alt="marilyn.jpg"/>
+
+### Lithophane from an image with transparency in the background
+``` 
+java -jar pixelSTL.jar -p filament-palette-0.10mm-custom.json -w 400 -M 2 -i butterfly.png 
+```
+<img src="attachment/butterfly.jpg" width="500" alt="marilyn.jpg"/>
 
 ### Pixel Art image (with only color layers + FULL colors)
 ``` 
