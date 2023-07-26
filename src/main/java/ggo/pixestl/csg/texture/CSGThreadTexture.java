@@ -7,7 +7,7 @@ import ggo.pixestl.csg.CSGThreadRow;
 import ggo.pixestl.csg.CSGWorkData;
 import ggo.pixestl.generator.GenInstruction;
 
-public class CSGThreadTexture<T extends CSGThreadRow> extends CSGThread<T>
+public class CSGThreadTexture extends CSGThread
 {
 	public CSGThreadTexture(Class c,CSGWorkData csgWorkData)
 	{

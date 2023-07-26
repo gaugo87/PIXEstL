@@ -5,7 +5,7 @@ import ggo.pixestl.csg.CSGWorkData;
 import java.awt.image.BufferedImage;
 
 
-public class CSGThreadSupport extends CSGThread<CSGThreadSupportRow>
+public class CSGThreadSupport extends CSGThread
 {
 	public CSGThreadSupport(Class c, CSGWorkData csgWorkData)
 	{

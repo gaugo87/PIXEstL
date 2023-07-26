@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import ggo.pixestl.csg.CSGThread;
 import ggo.pixestl.csg.CSGWorkData;
 
-public class CSGThreadColor extends CSGThread<CSGThreadColorRow>
+public class CSGThreadColor extends CSGThread
 {
 	public CSGThreadColor(Class c,CSGWorkData csgWorkData)
 	{

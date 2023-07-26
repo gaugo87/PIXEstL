@@ -83,10 +83,10 @@ public class StlMaker {
 			
 			CSGWorkData csgWorkData =new CSGWorkData(colorImage,texturedImage,palette,palette.getColorName(whiteColor),whiteColor,genInstruction);
 			if (ImageUtil.hasATransparentPixel(texturedImage)) {
-				csgThreadTexture = new CSGThreadTexture<CSGThreadTextureRowWithTransparency>(CSGThreadTextureRowWithTransparency.class, csgWorkData);
+				csgThreadTexture = new CSGThreadTexture(CSGThreadTextureRowWithTransparency.class, csgWorkData);
 			}
 			else {
-				csgThreadTexture = new CSGThreadTexture<CSGThreadTextureRow>(CSGThreadTextureRow.class,csgWorkData);
+				csgThreadTexture = new CSGThreadTexture(CSGThreadTextureRow.class,csgWorkData);
 			}
 			executorService.execute(csgThreadTexture);
 			
