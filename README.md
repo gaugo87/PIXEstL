@@ -15,6 +15,7 @@ usage: PIXEstL
  -b,--colorPixelLayerThickness <arg>   Thickness of each color pixel layer (mm). Default: 0.1
  -c,--colorNumber <arg>                Maximum number of color number. Default: no limits
  -cW,--colorPixelWidth <arg>           Width of color pixels (mm). Default: 0.8
+ -d,--colorDistanceComputation <arg>   Method for pixel color distance computation [RGB,CIELab]. Default: CIELab
  -F,--pixelCreationMethod <arg>        Method for pixel creation [ADDITIVE,FULL]. Default: ADDITIVE
  -f,--plateThickness <arg>             Thickness of the plate (mm). Default: 0.2
  -i,--srcImagePath <arg>               Path to the source image.
@@ -29,7 +30,7 @@ usage: PIXEstL
  -T,--rowThreadTimeout <arg>           Timeout for row threads (second). Default : 60
  -tW,--texturePixelWidth <arg>         Width of texture pixels (mm). Default: 0.25
  -w,--destImageWidth <arg>             Width of the destination image (mm).
- -X,--debug                            debug mode
+ -X,--debug                            Debug mode
  -z,--colorLayer <arg>                 Color layers will generate or not. Default : true
  -Z,--textureLayer <arg>               Texture layers will generate or not. Default : true
 ```
