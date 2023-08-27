@@ -38,23 +38,23 @@ usage: PIXEstL
 
 ### Color lithophanes
 ``` 
-java -jar PIXEstL.jar -p palette-0.1mm.json -w 130 -i Cafe_Terrace_at_Night.jpg
+java -jar PIXEstL.jar -p palette-0.1mm.json -w 130 -d RGB -i Cafe_Terrace_at_Night.jpg
 ```
 <img src="attachment/Terrace_at_Night.jpg" width="500" alt="Terrace_at_Night"/>
 
 ``` 
-java -jar PIXEstL.jar -p filament-palette.json -w 150 -i mem.png
+java -jar PIXEstL.jar -p filament-palette.json -w 150 -d RGB -i mem.png
 ```
 <img src="attachment/memory_geisha.jpg" width="500" alt="memory_geisha"/>
 
 ```
-java -jar PIXEstL.jar -p filament-palette.json -w 150 -i thanos.jpg
+java -jar PIXEstL.jar -p filament-palette.json -w 150 -d RGB -i thanos.jpg
 ```
 <img src="attachment/thanos.jpg" width="500" alt="thanos"/>
 
 ### Color lithophane with small texture layer
 ``` 
-java -jar PIXEstL.jar -p filament-palette.json -w 130 -M 1.4 -i rainbow_infinity.png
+java -jar PIXEstL.jar -p filament-palette.json -w 130 -d RGB -M 1.4 -i rainbow_infinity.png
 ``` 
 <img src="attachment/infinity.jpg" width="500" alt="infinity"/>
 
@@ -66,19 +66,25 @@ java -jar PIXEstL.jar -p filament-palette.json -M 3 -w 150 -z false -i tsunami_H
 
 ### Lithophane of a face with underexposure and overexposure to light
 ``` 
-java -jar PIXEstL.jar -p filament-palette-0.10mm-custom.json -w 100 -i Marilyn.jpg
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 100 -i Marilyn.jpg
 ```
 <img src="attachment/marilyn.jpg" width="500" alt="marilyn.jpg"/>
 
+### Lithophane with the new default color distance computation (CIELab)
+``` 
+java -jar PIXEstL.jar -p filament-palette-0.10mm-custom.json -w 150 -M 1.5 -i Petals.jpg
+```
+<img src="attachment/petals.jpg" width="500" alt="petals.jpg"/>
+
 ### Lithophane from an image with transparency in the background
 ``` 
-java -jar PIXEstL.jar -p filament-palette-0.10mm-custom.json -w 400 -M 2 -i butterfly.png 
+java -jar PIXEstL.jar -p filament-palette-0.10mm-custom.json -w 400 -d RGB -M 2 -i butterfly.png 
 ```
 <img src="attachment/butterfly.jpg" width="500" alt="marilyn.jpg"/>
 
 ### Pixel Art image (with only color layers + FULL colors)
 ``` 
-java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 200 -c 8 -F FULL -Z false -cW 2 -l 2 -f 1 -i tsunami_Hokusai.jpg
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 200 -c 8 -F FULL -Z false -cW 2 -l 2 -f 1 -d RGB -i tsunami_Hokusai.jpg
 ```
 <img src="attachment/tsunami_hokusai_pixel.jpg" width="750" alt="tsunami_hokusai_pixel"/>
 

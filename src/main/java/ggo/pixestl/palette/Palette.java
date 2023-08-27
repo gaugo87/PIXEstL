@@ -156,7 +156,7 @@ public class Palette
 					continue;
 				}
 				Color pixelColor = new Color(image.getRGB(x, y));
-				Color closestColor = ColorUtil.findClosestColor(pixelColor, colors);
+				Color closestColor = ColorUtil.findClosestColor(pixelColor, colors,genInstruction.getColorDistanceComputation());
 				quantizedImage.setRGB(x, y, closestColor.getRGB());
 			}
 		}

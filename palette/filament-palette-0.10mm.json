@@ -218,7 +218,7 @@
   "#00000":
   {
 	"name": "Black[PLA Basic]",
-	"active": false,
+	"active": true,
 	"layers": {
     "5": {
       "H": 0,
@@ -228,7 +228,7 @@
   },
   "#A6A9AA": {
     "name": "Silver[PLA Basic]",
-	"active": false,
+	"active": true,
 	"layers": {
 	"5": {
       "H": 206.7,
@@ -258,7 +258,7 @@
   },
   "#E7CEB5": {
     "name": "Beige[PLA Basic]",
-	"active": false,
+	"active": true,
 	"layers": {
 	"5": {
       "H": 30,

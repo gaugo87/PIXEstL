@@ -7,9 +7,11 @@ public class GenInstruction
 	public enum PixelCreationMethod {ADDITIVE,FULL}
 	public static final String ADD = "ADDITIVE";
 	public static final String FULL = "FULL";
-	
-	
 
+
+	public enum ColorDistanceComputation {RGB,CIELab}
+	public static final String RGB = "RGB";
+	public static final String CIELab = "CIELab";
 	public static final double DEFAULT_VALUE_PLATE_THICKNESS=0.2;
 	public static final int DEFAULT_VALUE_COLOR_LAYER_NUMBER=5;
 	public static final double DEFAULT_VALUE_COLOR_PIXEL_LAYER_THICKNESS=0.1;
@@ -32,6 +34,8 @@ public class GenInstruction
 	protected int colorNumber;
 	
 	protected PixelCreationMethod pixelCreationMethod=PixelCreationMethod.ADDITIVE;
+
+	protected ColorDistanceComputation colorDistanceComputation = ColorDistanceComputation.CIELab;
 	
 	protected double destImageWidth=0; //mm
 	
@@ -84,6 +88,9 @@ public class GenInstruction
 	}
 	public PixelCreationMethod getPixelCreationMethod() {
 		return pixelCreationMethod;
+	}
+	public ColorDistanceComputation getColorDistanceComputation() {
+		return colorDistanceComputation;
 	}
 	public int getColorPixelLayerNumber() {
 		return colorPixelLayerNumber;

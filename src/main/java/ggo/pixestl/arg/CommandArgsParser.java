@@ -33,6 +33,7 @@ public class CommandArgsParser extends GenInstruction {
 		optArgList.add(new Option("o", "destZipPath", true, "Destination ZIP file path.\nDefault: <-image>.zip"));
 		optArgList.add(new Option("c", "colorNumber", true, "Maximum number of color number.\nDefault: no limits"));
 		optArgList.add(new Option("F", "pixelCreationMethod", true, "Method for pixel creation [ADDITIVE,FULL].\nDefault: "+GenInstruction.ADD));
+		optArgList.add(new Option("d", "colorDistanceComputation", true, "Method for pixel color distance computation [RGB,CIELab].\nDefault: "+GenInstruction.CIELab));
 		optArgList.add(new Option("f", "plateThickness", true, "Thickness of the plate (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_PLATE_THICKNESS));
 		optArgList.add(new Option("l", "colorLayerNumber", true, "Number of color pixel layers.\nDefault: "+GenInstruction.DEFAULT_VALUE_COLOR_LAYER_NUMBER));
 		optArgList.add(new Option("b", "colorPixelLayerThickness", true, "Thickness of each color pixel layer (mm).\nDefault: "+GenInstruction.DEFAULT_VALUE_COLOR_PIXEL_LAYER_THICKNESS));
@@ -133,6 +134,14 @@ public class CommandArgsParser extends GenInstruction {
 		if (ADD.equals(pixelCreationMethodString)) pixelCreationMethod=PixelCreationMethod.ADDITIVE;
 		else if (FULL.equals(pixelCreationMethodString)) pixelCreationMethod=PixelCreationMethod.FULL;
 		if (pixelCreationMethod == null) throw new IllegalArgumentException(pixelCreationMethodString+" don't match with "+ADD+" or "+FULL);
+	}
+
+	public void setColorDistanceComputationString(String colorDistanceComputationString)
+	{
+		colorDistanceComputation=null;
+		if (RGB.equals(colorDistanceComputationString)) colorDistanceComputation=ColorDistanceComputation.RGB;
+		else if (CIELab.equals(colorDistanceComputationString)) colorDistanceComputation=ColorDistanceComputation.CIELab;
+		if (colorDistanceComputation == null) throw new IllegalArgumentException(colorDistanceComputationString+" don't match with "+RGB+" or "+CIELab);
 	}
 	
 	public void setColorPixelWidthString(String colorPixelWidthString)
