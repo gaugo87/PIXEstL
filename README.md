@@ -39,29 +39,29 @@ usage: PIXEstL
 
 ### Color lithophanes
 ``` 
-java -jar PIXEstL.jar -p palette-0.1mm.json -w 130 -d RGB -i Cafe_Terrace_at_Night.jpg
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 130 -d RGB -i Cafe_Terrace_at_Night.jpg
 ```
 <img src="attachment/Terrace_at_Night.jpg" width="500" alt="Terrace_at_Night"/>
 
 ``` 
-java -jar PIXEstL.jar -p filament-palette.json -w 150 -d RGB -i mem.png
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -d RGB -i mem.png
 ```
 <img src="attachment/memory_geisha.jpg" width="500" alt="memory_geisha"/>
 
 ```
-java -jar PIXEstL.jar -p filament-palette.json -w 150 -d RGB -i thanos.jpg
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -d RGB -i thanos.jpg
 ```
 <img src="attachment/thanos.jpg" width="500" alt="thanos"/>
 
 ### Color lithophane with small texture layer
 ``` 
-java -jar PIXEstL.jar -p filament-palette.json -w 130 -d RGB -M 1.4 -i rainbow_infinity.png
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 130 -d RGB -M 1.4 -i rainbow_infinity.png
 ``` 
 <img src="attachment/infinity.jpg" width="500" alt="infinity"/>
 
 ### Lithophane with only texture layer
 ``` 
-java -jar PIXEstL.jar -p filament-palette.json -M 3 -w 150 -z false -i tsunami_Hokusai.jpg
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -M 3 -w 150 -z false -i tsunami_Hokusai.jpg
 ``` 
 <img src="attachment/tsunami_hokusai.jpg" width="750" alt="tsunami_hokusai"/>
 
@@ -73,13 +73,13 @@ java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 100 -i Marilyn.jpg
 
 ### Lithophane with the new default color distance computation (CIELab)
 ``` 
-java -jar PIXEstL.jar -p filament-palette-0.10mm-custom.json -w 150 -M 1.5 -i Petals.jpg
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -M 1.5 -i Petals.jpg
 ```
 <img src="attachment/petals.jpg" width="500" alt="petals.jpg"/>
 
 ### Lithophane from an image with transparency in the background
 ``` 
-java -jar PIXEstL.jar -p filament-palette-0.10mm-custom.json -w 400 -d RGB -M 2 -i butterfly.png 
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 400 -d RGB -M 2 -i butterfly.png 
 ```
 <img src="attachment/butterfly.jpg" width="500" alt="marilyn.jpg"/>
 
@@ -151,14 +151,48 @@ Palette composed of BambuLab filaments, with 0.10mm layers :  [filament-palette-
       "L": 69.6
     },
 ```
-## Print settings
+## Recommended parameters for a 0.2mm nozzle (default)
+``` 
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -i ...
+``` 
+## Recommended parameters for a 0.4mm nozzle
+``` 
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -f 0.24 -b 0.12 -i ...
+``` 
 
-With Bambu Studio
+## Execution result
+Running the program generates a zip file that contains:
+- image-color-preview.png : color preview (image used to generate colors)
+- image-texture-preview.png : a preview of the texture (image used for texture layer)
+- layer-\<color>.stl * the number of color
+- layer-plate.stl
+- layer-texture-White.stl
+
+Example :  
+![](attachment/sample_result.png)
+
+## Slicing procedure
+### Print settings
+
 - Nozzle : 0.2mm (or 0.4mm)
 - Layer height : 0.10mm (or 0.12mm)
 - Infill density : 100%
 
-
+### Example with Bambu Studio
+- Open Bambu Studio
+- Import new STL files (CTRL+i)
+- Select all generated STl files  
+  ![](attachment/select_stl_files.png)
+- Click on "Yes" for the question "load these files as a single object with multiple parts"  
+  ![](attachment/as_a_single_object.png)
+- Setting adjustments:
+  - a 0.2 nozzle (or a 0.4 nozzle)
+  - a 0.10mm setting (or a 0.12mm for a 0.4 nozzle)
+  - Spare infill density : 100%   
+  
+  ![](attachment/bambu_param.png)
+- Go to the "Objects" tab and associate the layers with the color filaments  
+  ![](attachment/bambu_color_selection.png)
 
 ## Binary generation
 ### Prerequisites
@@ -172,3 +206,11 @@ set JAVA_HOME=C:\Program Files\Java\jdk-20
 set MAVEN_HOME=C:\Program Files\apache-maven-3.3.1
 mvn clean install
 ```
+## Generated binary
+[PIXEstL.zip](binary/PIXEstL.zip)
+### Sample execution
+- Unzip PIXEstL.zip
+- Go to PIXEstL directory (unzipped directory)
+- Execute sample.bat (double-click)
+- Open the generated zip file (Cafe_Terrace_at_Night.zip)
+

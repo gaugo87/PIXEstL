@@ -1,0 +1,30 @@
+<assembly>
+    <id>1.0</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>PIXEstL.jar</include>
+            </includes>
+        </fileSet>
+		<fileSet>
+            <directory>src/main/assembly/sample</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>palette</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.json</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
