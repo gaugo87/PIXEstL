@@ -209,6 +209,7 @@ mvn clean install
 ## Generated binary
 [PIXEstL.zip](binary/PIXEstL.zip)
 ### Sample execution
+- Install Java (https://www.java.com/fr/download/)
 - Unzip PIXEstL.zip
 - Go to PIXEstL directory (unzipped directory)
 - Execute sample.bat (double-click)
