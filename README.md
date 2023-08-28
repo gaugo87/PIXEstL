@@ -206,7 +206,7 @@ set JAVA_HOME=C:\Program Files\Java\jdk-20
 set MAVEN_HOME=C:\Program Files\apache-maven-3.3.1
 mvn clean install
 ```
-## Generated binary
+## Last release (binary)
 Go to [Releases section](https://github.com/gaugo87/PIXEstL/releases/latest) and download the last "PIXEstL-XXX.zip" file
 ### Sample execution
 - Install Java (https://www.java.com/fr/download/)
