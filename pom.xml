@@ -73,7 +73,8 @@
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>PIXEstL</finalName>
+							<finalName>PIXEstL-${project.version}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
 							<descriptors>
 								<descriptor>src/main/assembly/assembly.xml</descriptor>
 							</descriptors>
