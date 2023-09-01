@@ -34,6 +34,19 @@ usage: PIXEstL
  -z,--colorLayer <arg>                 Color layers will generate or not. Default : true
  -Z,--textureLayer <arg>               Texture layers will generate or not. Default : true
 ```
+## Quick Start (to quickly test the program)
+- Go to [Releases section](https://github.com/gaugo87/PIXEstL/releases/latest) and download the last "PIXEstL-XXX.zip" file
+- Install Java (https://www.java.com/fr/download/)
+- Unzip PIXEstL.zip
+- Go to PIXEstL directory (unzipped directory)
+- Execute sample.bat (double-click)
+
+A zip file has been generated (Cafe_Terrace_at_Night.zip) ? Congratulations! The program works!  
+Open the generated zip file, to see the result... 
+
+Then :  
+Edit and customize the file "sample.bat" with your parameters (for example, change the image path).  
+Edit and customize the file "filament-palette-0.10mm.json" for your filaments (for example, activate only 4 colors).
 
 ## Examples of results
 
@@ -206,12 +219,4 @@ set JAVA_HOME=C:\Program Files\Java\jdk-20
 set MAVEN_HOME=C:\Program Files\apache-maven-3.3.1
 mvn clean install
 ```
-## Last release (binary)
-Go to [Releases section](https://github.com/gaugo87/PIXEstL/releases/latest) and download the last "PIXEstL-XXX.zip" file
-### Sample execution
-- Install Java (https://www.java.com/fr/download/)
-- Unzip PIXEstL.zip
-- Go to PIXEstL directory (unzipped directory)
-- Execute sample.bat (double-click)
-- Open the generated zip file (Cafe_Terrace_at_Night.zip)
 
