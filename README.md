@@ -36,17 +36,18 @@ usage: PIXEstL
 ```
 ## Quick Start (to quickly test the program)
 - Go to [Releases section](https://github.com/gaugo87/PIXEstL/releases/latest) and download the last "PIXEstL-XXX.zip" file
-- Install Java (https://www.java.com/fr/download/)
+- Install Java. Ideally this version https://www.oracle.com/fr/java/technologies/downloads/#java17 (heavier but faster in execution), otherwise this one https://www.java.com/fr/download/ (lighter but slower in execution).
 - Unzip PIXEstL.zip
 - Go to PIXEstL directory (unzipped directory)
 - Execute sample.bat (double-click)
+- Wait between a few seconds and a few minutes, depending on your processor.
 
 A zip file has been generated (Cafe_Terrace_at_Night.zip) ? Congratulations! The program works!  
 Open the generated zip file, to see the result... 
 
 Then :  
-Edit and customize the file "sample.bat" with your parameters (for example, change the image path).  
-Edit and customize the file "filament-palette-0.10mm.json" for your filaments (for example, activate only 4 colors).
+- Edit and customize the file "sample.bat" with your parameters (for example, change the image path).  
+- Edit and customize the file "filament-palette-0.10mm.json" for your filaments (for example, activate only 4 colors).
 
 ## Examples of results
 
