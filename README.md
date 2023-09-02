@@ -58,7 +58,7 @@ java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 130 -d RGB -i Cafe_Terr
 <img src="attachment/Terrace_at_Night.jpg" width="500" alt="Terrace_at_Night"/>
 
 ``` 
-java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -d RGB -i mem.png
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -i mem.png
 ```
 <img src="attachment/memory_geisha.jpg" width="500" alt="memory_geisha"/>
 
