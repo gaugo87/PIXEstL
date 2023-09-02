@@ -67,6 +67,7 @@ public class Palette
             	colorLayerList.add(new ColorLayer(hexColor, genInstruction.getColorPixelLayerNumber() ,hsl[0],hsl[1],hsl[2]));
             }
         }
+		nbLayers=Math.max(nbLayers,genInstruction.getColorPixelLayerNumber());
         colorLayerList.sort(new ColorLayer.LayerComparator());
                 
         List<ColorCombi> colorCombiList = new ArrayList<>();

@@ -154,7 +154,7 @@ public class CommandArgsParser extends GenInstruction {
 		this.texturePixelWidth = Double.parseDouble(texturePixelWidthString);
 	}
 	
-	public void setColorPixelLayerNumberString(String colorPixelLayerNumberString) {
+	public void setColorLayerNumberString(String colorPixelLayerNumberString) {
 		this.colorPixelLayerNumber = Integer.parseInt(colorPixelLayerNumberString);
 	}
 	
