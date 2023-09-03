@@ -103,6 +103,9 @@ java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 200 -c 8 -F FULL -Z fal
 ```
 <img src="attachment/tsunami_hokusai_pixel.jpg" width="750" alt="tsunami_hokusai_pixel"/>
 
+### Others lithophanes
+
+<img src="attachment/ahsoka.jpg" width="500" alt="ahsoka.jpg"/>
 
 
 ## The palette
