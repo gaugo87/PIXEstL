@@ -35,10 +35,41 @@ public class CSGThreadColorRow extends CSGThreadRow
             
             if (layerHeight == 0) continue;
             double onePixelHeightSize=csgWorkData.getGenInstruction().getColorPixelLayerThickness();
+
+            int layerBefore=colorCombi.getLayerPosition(csgWorkData.getPalette(),csgWorkData.getHexCode());
+
+            if (csgWorkData.getOffset() != -1 && csgWorkData.getLayerMax() != -1)
+            {
+                if (layerBefore >= csgWorkData.getOffset()+csgWorkData.getLayerMax()) continue;
+
+                if (layerBefore < csgWorkData.getOffset())
+                {
+                    if (layerBefore+layerHeight<csgWorkData.getOffset()) continue;
+                    int delta = csgWorkData.getOffset()-layerBefore;
+                    layerHeight-=delta;
+                    layerBefore=0;
+                    if (layerHeight > csgWorkData.getLayerMax()) {
+                        layerHeight=csgWorkData.getLayerMax();
+                    }
+                }
+                else {
+                    if (layerBefore <= csgWorkData.getOffset()) layerBefore=0;
+                    if (layerBefore > csgWorkData.getOffset())
+                    {
+                        layerBefore-=csgWorkData.getOffset();
+                    }
+
+                    if (layerHeight + layerBefore > csgWorkData.getLayerMax()) {
+                        int delta = layerHeight + layerBefore - csgWorkData.getLayerMax();
+                        layerHeight -= delta;
+                    }
+                }
+                if (layerHeight==0) continue;
+            }
             double curPixelHeight=onePixelHeightSize*layerHeight;
             
             double curPixelHeightAdjust=(curPixelHeight/2);
-            int layerBefore=colorCombi.getLayerPosition(csgWorkData.getPalette(),csgWorkData.getHexCode());
+
             curPixelHeightAdjust+=layerBefore*onePixelHeightSize;
             
             double pixelWidth=csgWorkData.getGenInstruction().getColorPixelWidth();

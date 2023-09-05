@@ -26,9 +26,10 @@ public class PlateGenerator {
 	
 	public void process(GenInstruction genInstruction) throws Exception
 	{		
-		File srcImageFile= new File(genInstruction.getSrcImagePath());		
+		File srcImageFile= new File(genInstruction.getSrcImagePath());
+		System.out.print("Palette generation... ");
 		Palette palette =new Palette(genInstruction.getPalettePath(),genInstruction);
-		
+		System.out.println("("+palette.getColors().size()+" colors found)");
 		
 		BufferedImage image = ImageIO.read(srcImageFile);
 		
@@ -43,7 +44,8 @@ public class PlateGenerator {
 		
 		if (genInstruction.isColorLayer())
 		{
-			BufferedImage colorImage=ImageUtil.resizeImage(image, genInstruction.getDestImageWidth(),genInstruction.getColorPixelWidth());			
+			BufferedImage colorImage=ImageUtil.resizeImage(image, genInstruction.getDestImageWidth(),genInstruction.getColorPixelWidth());
+			System.out.println("Calculating color distances with the image...");
 			quantizedColorImage = palette.quantizeColors(colorImage);
 		}
 		if (genInstruction.isTextureLayer()) textureImage=ImageUtil.convertToBlackAndWhite(ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(),genInstruction.getTexturePixelWidth()));
@@ -55,6 +57,7 @@ public class PlateGenerator {
 		try (ZipOutputStream zipOut = new ZipOutputStream(Files.newOutputStream(Paths.get(genInstruction.getDestZipPath()))))
 		{
 			
+			System.out.println("Generating previews...");
 			if (quantizedColorImage != null)
 			{
 				ZipEntry zipEntry = new ZipEntry("image-color-preview.png");
@@ -68,7 +71,8 @@ public class PlateGenerator {
 				zipOut.putNextEntry(zipEntry);
 				ImageIO.write(textureImage, "png", zipOut);
 				zipOut.closeEntry();				
-			}			
+			}
+			System.out.println("Generating STL files...");
 			maker.process(zipOut);
 			
         }

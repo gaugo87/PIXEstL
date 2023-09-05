@@ -25,6 +25,8 @@ public class GenInstruction
 	public static final int DEFAULT_VALUE_ROW_THREAD_TIMEOUT=60;
 	public static final boolean DEFAULT_VALUE_COLOR_LAYER=true;
 	public static final boolean DEFAULT_VALUE_TEXTURE_LAYER=true;
+
+	public static final double DEFAULT_VALUE_CURVE=0.0;
 	
 	
 	protected String srcImagePath;
@@ -54,6 +56,8 @@ public class GenInstruction
 	protected int rowThreadNumber=DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER;
 	protected int layerThreadTimeout=DEFAULT_VALUE_LAYER_THREAD_TIMEOUT; //s
 	protected int rowThreadTimeout=DEFAULT_VALUE_ROW_THREAD_TIMEOUT; //s
+
+	protected double curve=DEFAULT_VALUE_CURVE;
 	
 	protected boolean colorLayer=DEFAULT_VALUE_COLOR_LAYER;
 	protected boolean textureLayer=DEFAULT_VALUE_TEXTURE_LAYER;
@@ -130,6 +134,10 @@ public class GenInstruction
 	}
 	public void setDebug(boolean debug) { this.debug=debug; }
 	public boolean isDebug() { return debug; }
+
+	public double getCurve() {
+		return curve;
+	}
 
 	
 }

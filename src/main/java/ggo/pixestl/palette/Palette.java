@@ -120,7 +120,7 @@ public class Palette
 		return hexCodesMap.get(hexCode);
 	}
 	
-	private List<Color> getColors() {
+	public List<Color> getColors() {
 		return new ArrayList<>(quantizedColors.keySet());
 	}
 		
