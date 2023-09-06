@@ -47,7 +47,7 @@ public class CommandArgsParser extends GenInstruction {
 		optArgList.add(new Option("T", "rowThreadTimeout", true, "Timeout for row threads (second).\nDefault : "+GenInstruction.DEFAULT_VALUE_ROW_THREAD_TIMEOUT));
 		optArgList.add(new Option("X", "debug", false, "Debug mode"));
 
-		optArgList.add(new Option("C", "curve", true, "Curve parameter .\nDefault: no curve"));
+		optArgList.add(new Option("C", "curve", true, "Curve parameter.\nDefault: no curve"));
 		
 		optArgList.add(new Option("z", "colorLayer", true, "Color layers will generate or not. Default : "+DEFAULT_VALUE_COLOR_LAYER));
 		optArgList.add(new Option("Z", "textureLayer", true, "Texture layers will generate or not. Default : "+DEFAULT_VALUE_TEXTURE_LAYER));

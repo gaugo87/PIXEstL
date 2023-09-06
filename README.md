@@ -14,6 +14,7 @@ For example for lithophanes, in addition to the usual Cyan, Magenta, and Yellow 
 usage: PIXEstL
  -b,--colorPixelLayerThickness <arg>   Thickness of each color pixel layer (mm). Default: 0.1
  -c,--colorNumber <arg>                Maximum number of color number. Default: no limits
+ -C,--curve <arg>                      Curve parameter. Default: no curve
  -cW,--colorPixelWidth <arg>           Width of color pixels (mm). Default: 0.8
  -d,--colorDistanceComputation <arg>   Method for pixel color distance computation [RGB,CIELab]. Default: CIELab
  -F,--pixelCreationMethod <arg>        Method for pixel creation [ADDITIVE,FULL]. Default: ADDITIVE
@@ -23,7 +24,7 @@ usage: PIXEstL
  -M,--textureMaxThickness <arg>        Maximum thickness of the texture (mm). Default: 2.5
  -m,--textureMinThickness <arg>        Minimum  thickness of the texture (mm). Default: 0.2
  -n,--layerThreadMaxNumber <arg>       Maximum number of threads for layers generation. Default: 1 by STL layer
- -N,--rowThreadMaxNumber <arg>         Number of threads for rows generation. Default: 8
+ -N,--rowThreadMaxNumber <arg>         Number of threads for rows generation. Default: number of cores available
  -o,--destZipPath <arg>                Destination ZIP file path. Default: <-image>.zip
  -p,--palettePath <arg>                Path to the palette file.
  -t,--layerThreadTimeout <arg>         Timeout for layer threads (second). Default: 120
