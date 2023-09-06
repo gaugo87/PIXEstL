@@ -13,8 +13,6 @@ public class CSGWorkData
 	final private String hexCode;
 	final private String threadName;
 	final GenInstruction genInstruction;
-
-	final double curve;
 	final int offset;
 	final int layerMax;
 
@@ -22,11 +20,11 @@ public class CSGWorkData
 	public CSGWorkData(BufferedImage colorImage,BufferedImage texturedImage,Palette palette,
 					   String threadName,String hexCode,GenInstruction genInstruction)
 	{
-		this(colorImage,texturedImage,palette,threadName,hexCode,0,-1,-1,genInstruction);
+		this(colorImage,texturedImage,palette,threadName,hexCode,-1,-1,genInstruction);
 	}
 
 	public CSGWorkData(BufferedImage colorImage,BufferedImage texturedImage,Palette palette,
-			String threadName,String hexCode,double curve,int offset, int layerMax, GenInstruction genInstruction)
+			String threadName,String hexCode,int offset, int layerMax, GenInstruction genInstruction)
 	{
 		this.colorImage=colorImage;
 		this.texturedImage=texturedImage;
@@ -34,7 +32,6 @@ public class CSGWorkData
 		this.threadName=threadName;
 		this.hexCode=hexCode;	
 		this.genInstruction=genInstruction;
-		this.curve=curve;
 		this.layerMax=layerMax;
 		this.offset=offset;
 
@@ -63,8 +60,6 @@ public class CSGWorkData
 	public int getOffset() {return offset; }
 
 	public int getLayerMax() {return layerMax; }
-
-	public double getCurve() {return curve; }
 
 	public GenInstruction getGenInstruction() {
 		return genInstruction;

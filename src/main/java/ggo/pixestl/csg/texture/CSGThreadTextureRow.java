@@ -28,7 +28,7 @@ public class CSGThreadTextureRow extends CSGThreadRow
 
         double widthPixel = width * pixelWidth;
 
-        double curve = csgWorkData.getCurve();
+        double curve = csgWorkData.getGenInstruction().getCurve();
 
         if (y == height - 1) return; //no need to manage the last row
 

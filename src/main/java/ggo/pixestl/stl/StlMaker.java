@@ -87,7 +87,7 @@ public class StlMaker {
 					String threadName="layer";
 					threadName+=nbColorPlate==1?"":(i+1)+"-";
 					CSGWorkData csgWorkData =new CSGWorkData(colorImage,texturedImage,palette,threadName+colorName,hexCode,
-							genInstruction.getCurve(),i*FLEXIBLE_COLOR_PLATE_NB,FLEXIBLE_COLOR_PLATE_NB,genInstruction);
+							i*FLEXIBLE_COLOR_PLATE_NB,FLEXIBLE_COLOR_PLATE_NB,genInstruction);
 					CSGThreadColor csgThreadColor = new CSGThreadColor(CSGThreadColorRow.class,csgWorkData);
 					csgThreadColors.add(csgThreadColor);
 					executorService.execute(csgThreadColor);
