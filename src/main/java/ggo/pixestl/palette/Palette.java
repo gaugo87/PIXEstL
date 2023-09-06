@@ -3,6 +3,7 @@ package ggo.pixestl.palette;
 import ggo.pixestl.generator.GenInstruction;
 import ggo.pixestl.generator.GenInstruction.PixelCreationMethod;
 import ggo.pixestl.util.ColorUtil;
+import ggo.pixestl.util.FindClosestColorThread;
 import ggo.pixestl.util.ImageUtil;
 import org.json.JSONObject;
 
@@ -15,6 +16,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Palette 
 {
@@ -142,11 +146,12 @@ public class Palette
 	{
 		int width = image.getWidth();
 		int height = image.getHeight();
-		
 		List<Color> colors=getColors();
-
 		BufferedImage quantizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
+		boolean allComplete = false;
+		List<FindClosestColorThread> findClosestColorThreadList =new ArrayList<>();
+		ExecutorService executorService = Executors.newFixedThreadPool(genInstruction.getRowThreadNumber());
 		for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
@@ -157,9 +162,37 @@ public class Palette
 					continue;
 				}
 				Color pixelColor = new Color(image.getRGB(x, y));
-				Color closestColor = ColorUtil.findClosestColor(pixelColor, colors,genInstruction.getColorDistanceComputation());
-				quantizedImage.setRGB(x, y, closestColor.getRGB());
+				FindClosestColorThread findClosestColorThread = new FindClosestColorThread(x,y,pixelColor, colors,genInstruction.getColorDistanceComputation());
+				executorService.execute(findClosestColorThread);
+				findClosestColorThreadList.add(findClosestColorThread);
 			}
+		}
+
+		executorService.shutdown();
+
+		try
+		{
+			allComplete = executorService.awaitTermination(genInstruction.getLayerThreadTimeout(), TimeUnit.SECONDS);
+			if (!allComplete)
+			{
+				System.err.println("Some color distance computation threads could not complete within the timeout period");
+			}
+		}
+		catch (InterruptedException e)
+		{
+			System.err.println("The main thread was interrupted while waiting.");
+		}
+		finally
+		{
+			if (!allComplete)
+			{
+				System.err.println("GENERATION ABORTED");
+				System.exit(-1);
+			}
+		}
+		for (FindClosestColorThread findClosestColorThread : findClosestColorThreadList)
+		{
+			quantizedImage.setRGB(findClosestColorThread.getX(), findClosestColorThread.getY(), findClosestColorThread.getClosestColor().getRGB());
 		}
 		return quantizedImage;
 	}

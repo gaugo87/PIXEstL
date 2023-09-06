@@ -25,7 +25,8 @@ public class PlateGenerator {
 	
 	
 	public void process(GenInstruction genInstruction) throws Exception
-	{		
+	{
+		long startTime = System.currentTimeMillis();
 		File srcImageFile= new File(genInstruction.getSrcImagePath());
 		System.out.print("Palette generation... ");
 		Palette palette =new Palette(genInstruction.getPalettePath(),genInstruction);
@@ -74,7 +75,9 @@ public class PlateGenerator {
 			}
 			System.out.println("Generating STL files...");
 			maker.process(zipOut);
-			
+			long endTime = System.currentTimeMillis();
+			long time= (endTime-startTime);
+			System.out.println("GENERATION COMPLETE ! ("+time+" ms)");
         }
 		catch (IOException e) {
             e.printStackTrace();

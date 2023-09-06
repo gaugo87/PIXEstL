@@ -57,6 +57,11 @@ public class StlMaker {
     	
     	if (this.colorImage !=null)
     	{
+			if (ImageUtil.hasATransparentPixel(this.colorImage) && genInstruction.getCurve()!=0.0)
+			{
+				throw new IllegalArgumentException("Curve mode not compatible with image with transparency");
+			}
+
 			if (!ImageUtil.hasATransparentPixel(this.colorImage)) {
 				csgPlate = new CSGSupportPlate();
 				csgPlate.generate(colorImage, genInstruction);
@@ -69,7 +74,7 @@ public class StlMaker {
 			int nbColorPlate = 1;
 			if (genInstruction.getCurve() != 0.0)
 			{
-				nbColorPlate = (int)(genInstruction.getColorPixelLayerNumber()/FLEXIBLE_COLOR_PLATE_NB);
+				nbColorPlate = (genInstruction.getColorPixelLayerNumber()/FLEXIBLE_COLOR_PLATE_NB);
 				nbColorPlate+=(genInstruction.getColorPixelLayerNumber()%FLEXIBLE_COLOR_PLATE_NB!=0)?1:0;
 			}
     		
@@ -187,7 +192,6 @@ public class StlMaker {
     		zipOut.closeEntry(); 
     	}
     	
-    	System.out.println("GENERATION COMPLETE !");
 
     }
     

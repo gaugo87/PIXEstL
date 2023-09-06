@@ -20,7 +20,7 @@ public class GenInstruction
 	public static final double DEFAULT_VALUE_TEXTURE_MIN_THICKNESS=0.2;
 	public static final double DEFAULT_VALUE_TEXTURE_PIXEL_WIDTH=0.25;
 	public static final int DEFAULT_VALUE_LAYER_THREAD_TIMEOUT=120;
-	public static final int DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER=8;
+	public static final int DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER=Runtime.getRuntime().availableProcessors();
 	public static final int DEFAULT_VALUE_LAYER_THREAD_MAX_NUMBER=0;
 	public static final int DEFAULT_VALUE_ROW_THREAD_TIMEOUT=60;
 	public static final boolean DEFAULT_VALUE_COLOR_LAYER=true;
