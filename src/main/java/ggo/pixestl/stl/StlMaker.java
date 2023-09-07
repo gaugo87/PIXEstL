@@ -72,8 +72,11 @@ public class StlMaker {
 				executorService.execute(csgSupportPlate);
 			}
 			int nbColorPlate = 1;
+
+			int colorPlatelayerNb=-1;
 			if (genInstruction.getCurve() != 0.0)
 			{
+				colorPlatelayerNb=FLEXIBLE_COLOR_PLATE_NB;
 				nbColorPlate = (genInstruction.getColorPixelLayerNumber()/FLEXIBLE_COLOR_PLATE_NB);
 				nbColorPlate+=(genInstruction.getColorPixelLayerNumber()%FLEXIBLE_COLOR_PLATE_NB!=0)?1:0;
 			}
@@ -87,7 +90,7 @@ public class StlMaker {
 					String threadName="layer";
 					threadName+=nbColorPlate==1?"":(i+1)+"-";
 					CSGWorkData csgWorkData =new CSGWorkData(colorImage,texturedImage,palette,threadName+colorName,hexCode,
-							i*FLEXIBLE_COLOR_PLATE_NB,FLEXIBLE_COLOR_PLATE_NB,genInstruction);
+							i*colorPlatelayerNb,colorPlatelayerNb,genInstruction);
 					CSGThreadColor csgThreadColor = new CSGThreadColor(CSGThreadColorRow.class,csgWorkData);
 					csgThreadColors.add(csgThreadColor);
 					executorService.execute(csgThreadColor);
