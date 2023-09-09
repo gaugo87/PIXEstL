@@ -106,7 +106,14 @@ java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 200 -c 8 -F FULL -Z fal
 
 ### Others lithophanes
 
-<img src="attachment/ahsoka.jpg" width="500" alt="ahsoka.jpg"/>
+<img src="attachment/ahsoka.jpg" width="300" alt="ahsoka.jpg"/>
+<img src="attachment/ryan.jpg" width="300" alt="ryan.jpg"/>
+<img src="attachment/cruella.jpg" width="300" alt="cruella.jpg"/>
+<img src="attachment/kingsman.jpg" width="300" alt="kingsman.jpg"/>
+<img src="attachment/seven_years_in_tibet.jpg" width="300" alt="seven_years_in_tibet.jpg"/>
+<img src="attachment/5th_element.jpg" width="300" alt="5th_element.jpg"/>
+<img src="attachment/warrior.jpg" width="300" alt="warrior.jpg"/>
+<img src="attachment/up.jpg" width="300" alt="up.jpg"/>
 
 
 ## The palette
