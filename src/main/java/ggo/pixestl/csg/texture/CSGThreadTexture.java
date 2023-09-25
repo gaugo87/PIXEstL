@@ -3,7 +3,6 @@ package ggo.pixestl.csg.texture;
 import java.awt.image.BufferedImage;
 import eu.mihosoft.vvecmath.Transform;
 import ggo.pixestl.csg.CSGThread;
-import ggo.pixestl.csg.CSGThreadRow;
 import ggo.pixestl.csg.CSGWorkData;
 import ggo.pixestl.generator.GenInstruction;
 
@@ -32,7 +31,7 @@ public class CSGThreadTexture extends CSGThread
 	        Transform transform = Transform.unity()
 	        		.translateX(-diffW/2-(g.getColorPixelWidth()-g.getTexturePixelWidth())/2)
 	        		.translateY(-diffH/2-(g.getColorPixelWidth()-g.getTexturePixelWidth())/2)
-	        		.translateZ(csgWorkData.getGenInstruction().getColorPixelLayerThickness()*csgWorkData.getGenInstruction().getColorPixelLayerNumber());
+	        		.translateZ(csgWorkData.getGenInstruction().getColorPixelLayerThickness()*csgWorkData.getPalette().getLayerCount());
 	        csg = csg.transformed(transform);
         }
 	}

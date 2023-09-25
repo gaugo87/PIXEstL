@@ -12,10 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -29,8 +27,14 @@ public class Palette
 	private Map<Color,ColorCombi> quantizedColors;
 	
 	private Map<String,String> hexCodesMap;
-	final List<String> sortedHexcodeList = new ArrayList<>();
-	
+
+	private final List<String> hexColorList = new ArrayList<>();
+	private final List<List<String> > hexColorGroupList = new ArrayList<>();
+
+	private int nbGroup=0;
+
+	private int layerCount = 0;
+
 	public Palette(String path,GenInstruction genInstruction) throws IOException {
 		this.genInstruction=genInstruction;
 		
@@ -64,52 +68,70 @@ public class Palette
 	                double l = subObject.getDouble("L");
 	                colorLayerList.add(new ColorLayer(hexColor, layer ,h,s,l));
 	            }
+				if (!hexColorList.contains(hexColor)) hexColorList.add(hexColor);
             }
             else if (genInstruction.getPixelCreationMethod() == PixelCreationMethod.FULL )
             {
             	double[] hsl= ColorUtil.colorToHSL(Color.decode(hexColor));
             	colorLayerList.add(new ColorLayer(hexColor, genInstruction.getColorPixelLayerNumber() ,hsl[0],hsl[1],hsl[2]));
+				if (!hexColorList.contains(hexColor)) hexColorList.add(hexColor);
             }
         }
-		nbLayers=Math.max(nbLayers,genInstruction.getColorPixelLayerNumber());
+
+		nbLayers=genInstruction.getColorPixelLayerNumber();
         colorLayerList.sort(new ColorLayer.LayerComparator());
-                
-        List<ColorCombi> colorCombiList = new ArrayList<>();
-        for (int i=0; i<colorLayerList.size();i++)
-        {
-        	ColorLayer colorLayer = colorLayerList.get(i);
-        	ColorCombi cC = new ColorCombi(colorLayer);
-        	colorCombiList.add(cC);
-        	if (i+1<colorLayerList.size())
-        	{
-        		colorCombiList.addAll(computeCombination(cC,colorLayerList.subList(i+1,colorLayerList.size())));        		
-        	}
-        }
-        for (ColorCombi c : colorCombiList)
-        {
-        	if (c.getTotalLayers() != genInstruction.getColorPixelLayerNumber()) continue;
-        	quantizedColors.put(c.getColor(genInstruction),c);
-        }
-        
-        sortedHexcodeList.addAll(hexCodesMap.keySet());
-        sortedHexcodeList.sort(null);
-        
+
+		hexColorList.sort(new ColorUtil.HexCodeComparator());
+
+
+		computeColorsByGroup(colorLayerList);
+	}
+
+	List<ColorCombi> createMultiCombi(List<String> restrictColorList,List<ColorLayer> colorLayerList)
+	{
+		List<ColorCombi> colorCombiList = new ArrayList<>();
+		for (int i=0; i<colorLayerList.size();i++)
+		{
+			ColorLayer colorLayer = colorLayerList.get(i);
+			if (restrictColorList != null) {
+				if (!restrictColorList.contains(colorLayer.getHexCode())) continue;
+			}
+
+			ColorCombi cC = new ColorCombi(colorLayer);
+			colorCombiList.add(cC);
+			if (i+1<colorLayerList.size())
+			{
+				colorCombiList.addAll(computeCombination(restrictColorList,cC,colorLayerList));
+			}
+		}
+		List<ColorCombi> finalColorCombiList = new ArrayList<>();
+		for (ColorCombi c : colorCombiList)
+		{
+			if (c.getTotalLayers() != genInstruction.getColorPixelLayerNumber()) continue;
+			finalColorCombiList.add(c);
+		}
+
+		return finalColorCombiList;
 	}
 		
-	private List<ColorCombi> computeCombination(ColorCombi cC,List<ColorLayer> colorLayerList) {
+	private List<ColorCombi> computeCombination(List<String> restrictColorList,ColorCombi cC,List<ColorLayer> colorLayerList) {
 		List<ColorCombi> colorCombiList = new ArrayList<>();
 		for (int i=0; i<colorLayerList.size();i++)
         {
+
         	ColorLayer colorLayer = colorLayerList.get(i);
+			if (restrictColorList!=null) {
+				if (!restrictColorList.contains(colorLayer.getHexCode())) continue;
+			}
         	int layer = colorLayer.getLayer();
         	
-        	if (cC.getTotalLayers()+layer > nbLayers) break;
+        	if (cC.getTotalLayers()+layer > nbLayers) continue;
         	if (cC.getTotalColors()>= hexCodesMap.entrySet().size()) break;
         	
         	ColorCombi cC2 = cC.combineLithoColorLayer(colorLayer,nbLayers);
         	if (cC2 == null) continue;
         	if (cC2.getTotalLayers() == genInstruction.getColorPixelLayerNumber()) colorCombiList.add(cC2);       	
-        	if (i+1<colorLayerList.size()) colorCombiList.addAll(computeCombination(cC2,colorLayerList.subList(i+1,colorLayerList.size())));
+        	if (i+1<colorLayerList.size()) colorCombiList.addAll(computeCombination(restrictColorList,cC2,colorLayerList));
         }
 		return colorCombiList;
 	}
@@ -132,13 +154,6 @@ public class Palette
 	public ColorCombi getColorCombi(Color c)
 	{
 		return quantizedColors.get(c);
-	}
-	
-	public int getPriorityColor(String hexCode)
-	{
-		for (int i=0;i<sortedHexcodeList.size();i++)
-			if (hexCode.equals(sortedHexcodeList.get(i))) return i;
-		return -1;
 	}
 
 	
@@ -190,17 +205,120 @@ public class Palette
 				System.exit(-1);
 			}
 		}
+
+		List<Color> usedColorList = new ArrayList<>();
+
 		for (FindClosestColorThread findClosestColorThread : findClosestColorThreadList)
 		{
+			if (!usedColorList.contains(findClosestColorThread.getClosestColor()))usedColorList.add(findClosestColorThread.getClosestColor());
 			quantizedImage.setRGB(findClosestColorThread.getX(), findClosestColorThread.getY(), findClosestColorThread.getClosestColor().getRGB());
 		}
+
+
+
+		Map<Color,ColorCombi> quantizedColorsTemp = new HashMap<>();
+		for (Color c: usedColorList)
+		{
+			quantizedColorsTemp.put(c,quantizedColors.get(c));
+		}
+		quantizedColors=quantizedColorsTemp;
+		System.out.println("Nb color used="+quantizedColors.size());
+
 		return quantizedImage;
 	}
+
+	public void computeColorsByGroup(List<ColorLayer> colorLayerList)
+	{
+		hexColorList.remove("#FFFFFF");
+
+		int nbColorPool = hexColorList.size(); //by default 1 group by Color
+		if (genInstruction.getPixelCreationMethod() == PixelCreationMethod.ADDITIVE && genInstruction.getColorNumber() != 0)
+		{
+			nbColorPool = genInstruction.getColorNumber() - 1;
+		}
+
+		nbGroup = hexColorList.size()/nbColorPool;
+		nbGroup+=hexColorList.size()%nbColorPool==0?0:1;
+
+		List<List<String> > hexColorGroup = new ArrayList<>();
+
+		for (int i=0;i<nbColorPool;i++) hexColorGroup.add(new ArrayList<>());
+
+		for (int i=0;i<nbGroup;i++)
+		{
+			for (int j=0;j<nbColorPool;j++)
+			{
+				if (nbColorPool*i+j>=hexColorList.size()) break;
+				hexColorGroup.get(i).add(hexColorList.get(nbColorPool*i+j));
+			}
+		}
+		List<List<ColorCombi>> colorCombiListList = new ArrayList<>();
+		for (int i=0;i<nbGroup;i++)
+		{
+			hexColorGroup.get(i).add("#FFFFFF");
+			List<ColorCombi> curColorCombiList = createMultiCombi(hexColorGroup.get(i),colorLayerList);
+			colorCombiListList.add(curColorCombiList);
+		}
+
+		Collections.reverse(colorCombiListList);
+
+		List<List<ColorCombi>> tempColorCombiListList = new ArrayList<>();
+		tempColorCombiListList.add(colorCombiListList.get(0));
+		for(int i=0;i<nbGroup-1;i++)
+		{
+			List<ColorCombi> tempColorCombiList = new ArrayList<>();
+			for (ColorCombi cI : tempColorCombiListList.get(i))
+			{
+				if (nbGroup>1) cI.addLayer(new ColorLayer("#FFFFFF",1,0,0,100));
+				for (ColorCombi cI1 : colorCombiListList.get(i+1)) {
+					tempColorCombiList.add(cI.combineLithoColorCombi(cI1));
+				}
+			}
+			tempColorCombiListList.add(tempColorCombiList);
+		}
+		List<ColorCombi> finalCombiList =tempColorCombiListList.get(tempColorCombiListList.size()-1);
+
+
+		layerCount=nbLayers * nbGroup+((nbGroup>1)?1:0);
+
+		for (ColorCombi c : finalCombiList)
+		{
+			quantizedColors.put(c.getColor(genInstruction),c);
+		}
+
+		initHexColorGroupList(hexColorGroup,nbColorPool);
+
+	}
+
+	private void initHexColorGroupList(List<List<String> > hexColorGroup,int nbColorPool)
+	{
+		for (int i=0;i<nbColorPool;i++)
+		{
+			hexColorGroupList.add(new ArrayList<>());
+		}
+
+		for (List<String> groupLayer : hexColorGroup)
+		{
+			groupLayer.remove("#FFFFFF");
+			for (int i=0;i<nbColorPool;i++)
+			{
+				if (i>=groupLayer.size()) continue;
+				hexColorGroupList.get(i).add(groupLayer.get(i));
+				Collections.reverse(hexColorGroupList.get(i));
+
+			}
+		}
+
+		List<String> whiteGroup = new ArrayList<>();
+		whiteGroup.add("#FFFFFF");
+		hexColorGroupList.add(whiteGroup);
+	}
+
+
 	
 	
 	
-	
-	public void restrictColors(BufferedImage image,int colorNumber) {
+	public void restrictFullColors(BufferedImage image,int colorNumber) {
 		
 		BufferedImage pixelatedImage = ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(), genInstruction.getColorPixelWidth());
 		BufferedImage quantizedImage = quantizeColors(pixelatedImage);
@@ -213,7 +331,7 @@ public class Palette
 		        int rgb = quantizedImage.getRGB(x, y);
 		        Color c = new Color(rgb);
 		        ColorCombi cc = quantizedColors.get(c);
-		        for (ColorLayer cL : cc.getLayers().values())
+		        for (ColorLayer cL : cc.getLayers())
 		        {
 		        	int count = colorCounts.getOrDefault(cL.getHexCode(), 0);
 		        	int nbLayer=cL.getLayer();
@@ -249,7 +367,7 @@ public class Palette
         {
         	ColorCombi cC = quantizedColors.get(c);
         	boolean excluded = false;
-    		for (ColorLayer cL : cC.getLayers().values())
+    		for (ColorLayer cL : cC.getLayers())
 	        {
 	        	if (!mostFrequentColors.contains(cL.getHexCode()))
 	        	{
@@ -266,8 +384,9 @@ public class Palette
         	for (Color c : quantizedColors.keySet())
         	{
         		ColorCombi cC=quantizedColors.get(c);
-        		for (String hexCode : cC.getLayers().keySet())
+        		for (ColorLayer l : cC.getLayers())
         		{
+					String hexCode=l.getHexCode();
 	        		for (String hex : hexCodesMap.keySet())
 	            	{
 	            		if (hexCode.equals(hex))
@@ -279,13 +398,44 @@ public class Palette
         		}
         	}
         }
-        hexCodesMap=newHexCodesMap;        
-        sortedHexcodeList.addAll(hexCodesMap.keySet());
-        sortedHexcodeList.sort(null);
-        
-        
+        hexCodesMap=newHexCodesMap;
 	}
-	
-	
+
+	public String generateSwapFilamentsInstruction()
+	{
+		double layerIdx=0;
+		StringBuilder sB = new StringBuilder();
+		for (int i=0;i<getNbGroup();i++)
+		{
+			sB.append("Layer[").append(layerIdx).append("] :");
+			int j=0;
+			for (List<String> hexColorGroup: hexColorGroupList())
+			{
+				if (i>=hexColorGroup.size())continue;
+				if (j!=0) sB.append(", ");
+				j++;
+				if (i!=0)
+				{
+					sB.append(getColorName(hexColorGroup.get(i - 1))).append("-->");
+				}
+				sB.append(getColorName(hexColorGroup.get(i)));
+			}
+			sB.append("\n");
+			if (i==0) layerIdx+=genInstruction.getPlateThickness();
+			layerIdx+=(genInstruction.getColorPixelLayerThickness()*(genInstruction.getColorPixelLayerNumber()+1));
+		}
+		return sB.toString();
+	}
+
+	public int getNbGroup() { return nbGroup;}
+
+	public List<List<String>> hexColorGroupList() {
+		return hexColorGroupList;
+	}
+
+	public int getLayerCount() {
+		return layerCount;
+	}
+
 
 }

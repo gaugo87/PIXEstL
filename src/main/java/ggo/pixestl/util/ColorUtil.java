@@ -5,6 +5,7 @@ import ggo.pixestl.generator.GenInstruction;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ColorUtil {
@@ -252,6 +253,20 @@ public class ColorUtil {
         double db = b2 - b1;
 
         return Math.sqrt(dL * dL + da * da + db * db);
+    }
+
+
+    public static class HexCodeComparator implements Comparator<String> {
+        public int compare(String s1, String s2)
+        {
+            Color c1 = Color.decode(s1);
+            Color c2 = Color.decode(s2);
+
+            double k1 = ColorUtil.colorToCMYK(c1)[3];
+            double k2 = ColorUtil.colorToCMYK(c2)[3];
+
+            return Double.compare(k2, k1);
+        }
     }
 
 }

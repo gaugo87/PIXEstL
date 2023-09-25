@@ -5,29 +5,29 @@
 	"active": true,
 	"layers": {
     "5": {
-      "H": 206,
-      "S": 84.5,
-      "L": 48
+      "H": 203.8,
+      "S": 99.1,
+      "L": 45.3
     },
 	"4": {
-      "H": 203,
-      "S": 80,
-      "L": 53
+      "H": 200.6,
+      "S": 95.9,
+      "L": 47.6
     },
     "3": {
-      "H": 202.4,
-      "S": 78.7,
-      "L": 50
+      "H": 199.8,
+      "S": 91.5,
+      "L": 53.9
     },
     "2": {
-      "H": 200,
-      "S": 87,
-      "L": 64.5
+      "H": 199.5,
+      "S": 100,
+      "L": 64.3
     },
     "1": {
-      "H": 200.3,
-      "S": 66,
-      "L": 78
+      "H": 201.9,
+      "S": 96.4,
+      "L": 78.2
     }}
   },
   "#8BD5EE": {
@@ -35,29 +35,29 @@
 	"active": true,
 	"layers": {
     "5": {
-      "H": 198,
-      "S": 77.6,
-      "L": 56.3
+      "H": 189.7,
+      "S": 71.8,
+      "L": 59.6
     },
 	"4": {
-      "H": 198,
-      "S": 81.5,
-      "L": 61.8
+      "H": 191.1,
+      "S": 78.9,
+      "L": 66.5
     },
     "3": {
-      "H": 198,
-      "S": 77,
-      "L": 65.9
+      "H": 191.1,
+      "S": 75.9,
+      "L": 72.4
     },
     "2": {
-      "H": 198,
-      "S": 64.2,
-      "L": 73.7
+      "H": 192.8,
+      "S": 66.4,
+      "L": 77.8
     },
     "1": {
-      "H": 200,
-      "S": 50,
-      "L": 82.5
+      "H": 193.3,
+      "S": 53,
+      "L": 84.1
     }}
   },
   "#E4BDD0":
@@ -66,29 +66,29 @@
 	"active": true,
 	"layers": {
     "5": {
-      "H": 354,
-      "S": 59,
-      "L": 71
+      "H": 353.3,
+      "S": 86.6,
+      "L": 73.7
     },
 	"4": {
-      "H": 356,
-      "S": 57,
-      "L": 70
+      "H": 352.8,
+      "S": 90.9,
+      "L": 78.4
     },
     "3": {
-      "H": 347,
-      "S": 48,
-      "L": 75
+      "H": 351,
+      "S": 80.2,
+      "L": 82.2
     },
     "2": {
-      "H": 340,
-      "S": 29,
-      "L": 76
+      "H": 352.7,
+      "S": 71,
+      "L": 86.5
     },
     "1": {
-      "H": 323,
-      "S": 16,
-      "L": 80
+      "H": 345.7,
+      "S": 33.3,
+      "L": 87.6
     }}
   },
   "#EC008C":
@@ -97,29 +97,29 @@
 	"active": true,
 	"layers": {
     "5": {
-      "H": 324.4,
-      "S": 75,
-      "L": 55
+      "H": 336,
+      "S": 100,
+      "L": 59
     },
 	"4": {
-      "H": 324.4,
-      "S": 75,
-      "L": 57.3
+      "H": 331.5,
+      "S": 100,
+      "L": 62
     },
     "3": {
-      "H": 324.4,
-      "S": 75,
-      "L": 59.8
-    },
-    "2": {
-      "H": 324.4,
-      "S": 69,
+      "H": 328.6,
+      "S": 100,
       "L": 65.9
     },
+    "2": {
+      "H": 327.7,
+      "S": 100,
+      "L": 72.4
+    },
     "1": {
-      "H": 324.4,
-      "S": 52,
-      "L": 74.7
+      "H": 328,
+      "S": 93.9,
+      "L": 80.8
     }}
   },
   "#FCE300":
@@ -128,29 +128,29 @@
 	"active": true,
 	"layers": {
     "5": {
-      "H": 54,
-      "S": 80,
-      "L": 52
+      "H": 53.2,
+      "S": 82.3,
+      "L": 57.8
     },
 	"4": {
-      "H": 54,
-      "S": 75,
-      "L": 52
+      "H": 52.8,
+      "S": 84.5,
+      "L": 59.6
     },
     "3": {
-      "H": 54,
-      "S": 75,
-      "L": 54.1
+      "H": 54.8,
+      "S": 83.6,
+      "L": 61.8
     },
     "2": {
-      "H": 54,
-      "S": 75,
-      "L": 59.2
+      "H": 57.5,
+      "S": 83.5,
+      "L": 66.7
     },
     "1": {
-      "H": 61.8,
-      "S": 73.9,
-      "L": 70
+      "H": 61.1,
+      "S": 80.7,
+      "L": 73.5
     }}
   },
   "#FFE34F":
@@ -159,29 +159,29 @@
 	"active": true,
 	"layers": {
     "5": {
-      "H": 52.9,
-      "S": 73.7,
-      "L": 50.8
+      "H": 50.3,
+      "S": 71.2,
+      "L": 59.2
     },
 	"4": {
-      "H": 52.9,
-      "S": 78.7,
-      "L": 53.9
+      "H": 51,
+      "S": 81,
+      "L": 62.9
     },
     "3": {
-      "H": 53.8,
-      "S": 81.3,
-      "L": 55.9
+      "H": 52.1,
+      "S": 82.5,
+      "L": 64.1
     },
     "2": {
-      "H": 56.9,
-      "S": 75.4,
-      "L": 60.2
+      "H": 53.9,
+      "S": 80.1,
+      "L": 66.5
     },
     "1": {
-      "H": 61.2,
-      "S": 63.9,
-      "L": 70.2
+      "H": 55.7,
+      "S": 69.8,
+      "L": 72.7
     }}
   },
   "#FFFFFF":
@@ -192,30 +192,30 @@
     "5": {
       "H": 0,
       "S": 0,
-      "L": 92
+      "L": 85
     },
 	"4": {
       "H": 0,
       "S": 0,
-      "L": 92
+      "L": 85
     },
     "3": {
       "H": 0,
       "S": 0,
-      "L": 92
+      "L": 85
     },
     "2": {
       "H": 0,
       "S": 0,
-      "L": 92
+      "L": 95
     },
     "1": {
       "H": 0,
       "S": 0,
-      "L": 92
+      "L": 95
     }}
   },
-  "#00000":
+  "#000000":
   {
 	"name": "Black[PLA Basic]",
 	"active": true,
@@ -236,29 +236,29 @@
 	"active": true,
 	"layers": {
 	"5": {
-      "H": 206.7,
-      "S": 4.1,
-      "L": 42.5
+      "H": 192.2,
+      "S": 2,
+      "L": 48.4
     },
 	"4": {
-      "H": 212.6,
-      "S": 6.2,
-      "L": 52.4
+      "H": 150,
+      "S": 0.9,
+      "L": 56.1
     },
     "3": {
-      "H": 212.7,
-      "S": 5.9,
-      "L": 63.7
+      "H": 150,
+      "S": 1,
+      "L": 61.2
     },
     "2": {
-      "H": 206.7,
-      "S": 5.8,
-      "L": 69.6
+      "H": 228.3,
+      "S": 3.3,
+      "L": 70
     },
     "1": {
-      "H": 206.7,
-      "S": 7.8,
-      "L": 77.5
+      "H": 202.5,
+      "S": 7.4,
+      "L": 78.8
     }}
   },
   "#E7CEB5": {
@@ -266,162 +266,214 @@
 	"active": true,
 	"layers": {
 	"5": {
-      "H": 30,
-      "S": 30,
-      "L": 65
+      "H": 33,
+      "S": 42.6,
+      "L": 81.6
     },
 	"4": {
-      "H": 30,
-      "S": 25,
-      "L": 71
+      "H": 33.1,
+      "S": 34.1,
+      "L": 83.3
     },
     "3": {
-      "H": 30,
-      "S": 15,
-      "L": 73
+      "H": 35,
+      "S": 21,
+      "L": 84.1
     },
     "2": {
-      "H": 30,
-      "S": 11,
-      "L": 75
+      "H": 50,
+      "S": 8.3,
+      "L": 85.9
     },
     "1": {
-      "H": 30,
-      "S": 5,
-      "L": 80
+      "H": 100,
+      "S": 5.5,
+      "L": 89.2
+    }}
+  },
+  "#6E3FA3": {
+    "name": "Purple[PLA Basic]",
+	"active": false,
+	"layers": {
+	"5": {
+      "H": 273.7,
+      "S": 35.2,
+      "L": 50.4
+    },
+	"4": {
+      "H": 277.5,
+      "S": 47.3,
+      "L": 56.9
+    },
+    "3": {
+      "H": 281.4,
+      "S": 48.7,
+      "L": 61
+    },
+    "2": {
+      "H": 284.3,
+      "S": 50.6,
+      "L": 69
+    },
+    "1": {
+      "H": 282,
+      "S": 36.4,
+      "L": 78.4
     }}
   },
   "#D3B7A7": {
     "name": "Matte Latte Brown[PLA Matte]",
-	"active": true
+	"active": false,
+	"layers": {
+	"5": {
+      "H": 17.8,
+      "S": 39.2,
+      "L": 49
+    },
+	"4": {
+      "H": 22.3,
+      "S": 48.9,
+      "L": 54.7
+    },
+    "3": {
+      "H": 28.7,
+      "S": 56.9,
+      "L": 59
+    },
+    "2": {
+      "H": 32.5,
+      "S": 64.8,
+      "L": 67.6
+    },
+    "1": {
+      "H": 32.4,
+      "S": 57.8,
+      "L": 78.6
+    }}
   },
   "#61C680": {
     "name": "Matte Grass Green[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#AE96D4": {
     "name": "Matte Lilac Violet[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#F99963": {
     "name": "Matte Mandarin Orange[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#0078BF": {
     "name": "Matte Marine Blue[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#DE4343": {
     "name": "Matte Scarlet Red matte[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#FFE17F": {
     "name": "Matte Lemon Yellow[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#9B9EA0": {
     "name": "Matte Ash Grey[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#68724D": {
     "name": "Matte Dark Green[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#BB3D43": {
     "name": "Matte Dark Red[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#375172": {
     "name": "Matte Dark Blue[PLA Matte]",
-	"active": true
+	"active": false
   },
   "#7D6556": {
     "name": "Matte Dark Brown[PLA Matte]",
-	"active": true
-  },
-  "#6E3FA3": {
-    "name": "Purple[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#E4BD64": {
     "name": "Gold[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#84754E": {
     "name": "Bronze[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#00AE42": {
     "name": "Bamboo Green[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#00358E": {
     "name": "Blue[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#C00D1E": {
     "name": "Red[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#005F61": {
     "name": "Green[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#FF6A13": {
     "name": "Orange[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#8E9089": {
     "name": "Grey[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#4C5F71": {
     "name": "Blue Grey[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#FF5869": {
     "name": "Pink[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#9D432C": {
     "name": "Brown[PLA Basic]",
-	"active": true
+	"active": false
   },
   "#FFC600": {
     "name": "Gold[PLA Silk]",
-	"active": true
+	"active": false
   },
   "#97999B": {
     "name": "Silver[PLA Silk]",
-	"active": true
+	"active": false
   },
   "#5E4B3C": {
     "name": "Copper[PLA Silk]",
-	"active": true
+	"active": false
   },
   "#147BD1": {
     "name": "Blue[PLA Silk]",
-	"active": true
+	"active": false
   },
   "#B39B84": {
     "name": "Iridium Gold Metallic[PLA Metal]",
-	"active": true
+	"active": false
   },
   "#39699E": {
     "name": "Cobalt Blue Metallic[PLA Metal]",
-	"active": true
+	"active": false
   },
   "#1D7C6A": {
     "name": "Oxide Green Metallic[PLA Metal]",
-	"active": true
+	"active": false
   },
   "#AA6443": {
     "name": "Copper Brown Metallic[PLA Metal]",
-	"active": true
+	"active": false
   },
   "#43403D": {
     "name": "Iron Grey Metallic[PLA Metal]",
-	"active": true
+	"active": false
   },
   "#3F5443": {
     "name": "Alpine Green Sparkle[PLA Sparkle]",
@@ -429,19 +481,19 @@
   },
   "#792B36": {
     "name": "Crimson Red Sparkle[PLA Sparkle]",
-	"active": true
+	"active": false
   },
   "#2D2B28": {
     "name": "Onyx Black Sparkle[PLA Sparkle]",
-	"active": true
+	"active": false
   },
   "#6667AB": {
     "name": "Lavender Blue[PLA Tough]",
-	"active": true
+	"active": false
   },
   "#00482B": {
     "name": "Pine Green[PLA Tough]",
-	"active": true
+	"active": false
   },
   "#25282A": {
     "name": "Black[PLA Tough]",

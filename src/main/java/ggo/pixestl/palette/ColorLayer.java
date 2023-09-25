@@ -1,5 +1,6 @@
 package ggo.pixestl.palette;
 
+import java.awt.*;
 import java.util.Comparator;
 
 import ggo.pixestl.util.ColorUtil;
@@ -48,8 +49,17 @@ public class ColorLayer
         return k;
     }
 	public static class LayerComparator implements Comparator<ColorLayer> {
-        public int compare(ColorLayer lCL1, ColorLayer lCL2) {
-            return Integer.compare(lCL1.getLayer(), lCL2.getLayer());
+        public int compare(ColorLayer lCL1, ColorLayer lCL2)
+        {
+            Color c1 = Color.decode(lCL1.getHexCode());
+            Color c2 = Color.decode(lCL2.getHexCode());
+
+            // Calculez la luminance en utilisant la formule Y = 0.299*R + 0.587*G + 0.114*B
+            double k1 = ColorUtil.colorToCMYK(c1)[3];
+            double k2 = ColorUtil.colorToCMYK(c2)[3];
+
+            // Triez de la plus foncée à la plus claire
+            return Double.compare(k2, k1);
         }
     }
 	

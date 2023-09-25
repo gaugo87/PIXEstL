@@ -34,9 +34,9 @@ public class PlateGenerator {
 		
 		BufferedImage image = ImageIO.read(srcImageFile);
 		
-		if (genInstruction.getColorNumber()!=0)
+		if (GenInstruction.PixelCreationMethod.FULL == genInstruction.pixelCreationMethod && genInstruction.getColorNumber()!=0)
 		{
-			palette.restrictColors(image,genInstruction.getColorNumber());
+			palette.restrictFullColors(image,genInstruction.getColorNumber());
 		}
 
 		

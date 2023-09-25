@@ -1,6 +1,7 @@
 package ggo.pixestl.csg;
 
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import ggo.pixestl.generator.GenInstruction;
 import ggo.pixestl.palette.Palette;
@@ -10,7 +11,7 @@ public class CSGWorkData
 	final private BufferedImage colorImage;
 	final private BufferedImage texturedImage;
 	final private Palette palette;
-	final private String hexCode;
+	final private List<String> hexCode;
 	final private String threadName;
 	final GenInstruction genInstruction;
 	final int offset;
@@ -18,13 +19,13 @@ public class CSGWorkData
 
 
 	public CSGWorkData(BufferedImage colorImage,BufferedImage texturedImage,Palette palette,
-					   String threadName,String hexCode,GenInstruction genInstruction)
+					   String threadName,List<String> hexCode,GenInstruction genInstruction)
 	{
 		this(colorImage,texturedImage,palette,threadName,hexCode,-1,-1,genInstruction);
 	}
 
 	public CSGWorkData(BufferedImage colorImage,BufferedImage texturedImage,Palette palette,
-			String threadName,String hexCode,int offset, int layerMax, GenInstruction genInstruction)
+			String threadName,List<String> hexCode,int offset, int layerMax, GenInstruction genInstruction)
 	{
 		this.colorImage=colorImage;
 		this.texturedImage=texturedImage;
@@ -49,7 +50,7 @@ public class CSGWorkData
 		return palette;
 	}
 
-	public String getHexCode() {
+	public List<String> getHexCode() {
 		return hexCode;
 	}
 
