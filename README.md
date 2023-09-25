@@ -98,6 +98,17 @@ java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 400 -d RGB -M 2 -i butt
 ```
 <img src="attachment/butterfly.jpg" width="500" alt="marilyn.jpg"/>
 
+### Lithophanes in 7 filaments with only 1 AMS (pool of 4 filaments)
+``` 
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 100 -M 1.7 -l 4 -c 4 -i Leon.png 
+```
+<img src="attachment/Leon_1AMS.jpg" width="500" alt="Leon_1AMS.jpg"/>
+
+```
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 100 -M 1.7 -l 4 -c 4 -i Cafe_Terrace_at_Night.jpg
+```
+<img src="attachment/Terrace_at_Night_1AMS.jpg" width="500" alt="Terrace_at_Night_1AMS"/>
+
 ### Pixel Art image (with only color layers + FULL colors)
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 200 -c 8 -F FULL -Z false -cW 2 -l 2 -f 1 -d RGB -i tsunami_Hokusai.jpg
