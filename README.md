@@ -13,7 +13,7 @@ For example for lithophanes, in addition to the usual Cyan, Magenta, and Yellow 
 ```usage: PIXEstL
 usage: PIXEstL
  -b,--colorPixelLayerThickness <arg>   Thickness of each color pixel layer (mm). Default: 0.1
- -c,--colorNumber <arg>                Maximum number of color number. Default: no limits
+ -c,--colorNumber <arg>                Maximum number of color number by layer. Default: no limits
  -C,--curve <arg>                      Curve parameter. Default: no curve
  -cW,--colorPixelWidth <arg>           Width of color pixels (mm). Default: 0.8
  -d,--colorDistanceComputation <arg>   Method for pixel color distance computation [RGB,CIELab]. Default: CIELab
@@ -167,24 +167,29 @@ The palette is composed of a JSON structure that gathers all the filaments you h
 
 The fields `#XXXXXX`, `name`, and `active` are mandatory. They allow for creating pixel art images.  
 The `layers` field is required for the filament to be used in creating color lithophanes through color addition.
+The code `#FFFFFF` filament is mandatory to be used in creating color lithophanes through color addition (but th HSL values can be changed).
 
 Palette composed of BambuLab filaments, with 0.10mm layers :  [filament-palette-0.10mm.json](palette/filament-palette-0.10mm.json)
 
 ### How to calculate the chromatic properties of the layers of your filament
 
 1. Create squares in your slicer with the desired thickness, representing the different desired layers. For example, if you are working with 0.1mm layers, create a square with a thickness of 0.1mm, another one with 0.2mm, then 0.3mm, 0.4mm, and 0.5mm.  
-   ![](attachment/slicer.png)
-2. Print the squares using the appropriate filament.
-3. Place each square in front of a neutral light source and take photos of them.
+   A sample of calibration square in 0.1mm is present [here](tools/calibration/)
+2. Print the squares using the appropriate filament.  
+   ![](attachment/slicer.png)  
+   And the appropriate print settings (infill 100%. layer height and first layer height at 0.1/0.12, etc. )
+
+   **Note:** Ironing is recommended to achieve a smoother and more uniform surface. This makes it easier to take measurements. 
+3. Place the squares in front of a neutral light source and take photos of them.
 4. Open with your favorite editor the photos (e.g., "Paint") and use the color picker tool to extract the color.
 5. Optionally, convert the hexadecimal color to HSL if your editing software does not provide HSL values (e.g., use a tool like https://convertacolor.com/).
    ![](attachment/calibration.png)
 6. Enter these HSL values for each layer in the palette.
 ```
     "2": {
-      "H": 202.4,
-      "S": 95,
-      "L": 69.6
+      "H": 199,
+      "S": 100,
+      "L": 64.1
     },
 ```
 ## Recommended parameters for a 0.2mm nozzle (default)
@@ -194,6 +199,11 @@ java -jar PIXEstL.jar -p filament-palette-0.10mm.json -i ...
 ## Recommended parameters for a 0.4mm nozzle
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -f 0.24 -b 0.12 -i ...
+``` 
+
+## Recommended parameters for a print in 7 colors with only an AMS with 4 colors
+``` 
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json ... -c 4 -l 4
 ``` 
 
 ## Execution result

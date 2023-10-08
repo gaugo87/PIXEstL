@@ -78,6 +78,11 @@ public class Palette
             }
         }
 
+		if (genInstruction.getPixelCreationMethod() == PixelCreationMethod.ADDITIVE && !hexColorList.contains("#FFFFFF"))
+		{
+			throw new IllegalArgumentException("\"#FFFFFF\" not found in the palette. The code \"#FFFFFF\" is mandatory in additive mode.");
+		}
+
 		nbLayers=genInstruction.getColorPixelLayerNumber();
         colorLayerList.sort(new ColorLayer.LayerComparator());
 
