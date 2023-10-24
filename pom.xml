@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ggo</groupId>
 	<artifactId>pixestl</artifactId>
-	<version>0.0.8</version>
+	<version>0.0.9</version>
 	<packaging>jar</packaging>
 	<name>PIXEstL</name>
 	<url>http://maven.apache.org</url>
@@ -18,12 +18,12 @@
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
-			<version>21-ea+17</version>
+			<version>22-ea+11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
-			<version>20230618</version>
+			<version>20231013</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>

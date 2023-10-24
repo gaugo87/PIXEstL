@@ -16,8 +16,8 @@ public class GenInstruction
 	public static final int DEFAULT_VALUE_COLOR_LAYER_NUMBER=5;
 	public static final double DEFAULT_VALUE_COLOR_PIXEL_LAYER_THICKNESS=0.1;
 	public static final double DEFAULT_VALUE_COLOR_PIXEL_WIDTH=0.8;
-	public static final double DEFAULT_VALUE_TEXTURE_MAX_THICKNESS=2.0;
-	public static final double DEFAULT_VALUE_TEXTURE_MIN_THICKNESS=0.2;
+	public static final double DEFAULT_VALUE_TEXTURE_MAX_THICKNESS=1.8;
+	public static final double DEFAULT_VALUE_TEXTURE_MIN_THICKNESS=0.3;
 	public static final double DEFAULT_VALUE_TEXTURE_PIXEL_WIDTH=0.25;
 	public static final int DEFAULT_VALUE_LAYER_THREAD_TIMEOUT=120;
 	public static final int DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER=Runtime.getRuntime().availableProcessors();
