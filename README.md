@@ -1,8 +1,3 @@
-<style>
-td, th {
-   border: none!important;
-}
-</style>
 # PIXEstL
 A program for creating color lithophane and pixel images.
 The program relies on a color palette that can be customized by adding its own filaments. This allows for the creation of lithophanes with an infinite variety of filaments.
@@ -55,11 +50,12 @@ Then :
 - Edit and customize the file "sample.bat" with your parameters (for example, change the image path).  
 - Edit and customize the file "filament-palette-0.10mm.json" for your filaments (for example, activate only 4 colors).
 
-## YouTube tutorial videos (in French)
-[![Présentation et première prise en main](https://img.youtube.com/vi/8y6Zytl4gRQ/0.jpg)](https://www.youtube.com/watch?v=8y6Zytl4gRQ)|
-[![La calibration des filaments](https://img.youtube.com/vi/1ErVSwkhZsk/0.jpg)](https://www.youtube.com/watch?v=1ErVSwkhZsk)|
-[![Lithophanie en 7 filaments avec 1 AMS](https://img.youtube.com/vi/eNYq8Aoz4VY/0.jpg)](https://www.youtube.com/watch?v=eNYq8Aoz4VY)|
-[![Faire une lithophanie avec bordures](https://img.youtube.com/vi/UnSNPAySEl0/0.jpg)](https://www.youtube.com/watch?v=UnSNPAySEl0)|
+## YouTube tutorial channel (in French)
+
+https://www.youtube.com/@PIXEstL-nb5cq
+
+[![Présentation et première prise en main](https://img.youtube.com/vi/8y6Zytl4gRQ/0.jpg)](https://www.youtube.com/@PIXEstL-nb5cq)
+
 
 ## Examples of results
 
