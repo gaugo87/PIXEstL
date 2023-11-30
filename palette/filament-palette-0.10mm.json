@@ -156,7 +156,7 @@
   "#FFE34F":
   {
 	"name": "Pale yellow[OVERTURE]",
-	"active": true,
+	"active": false,
 	"layers": {
     "5": {
       "H": 50.3,
@@ -233,7 +233,7 @@
   },
   "#A6A9AA": {
     "name": "Silver[PLA Basic]",
-	"active": true,
+	"active": false,
 	"layers": {
 	"5": {
       "H": 192.2,
@@ -353,14 +353,96 @@
   },
   "#61C680": {
     "name": "Matte Grass Green[PLA Matte]",
-	"active": false
+	"active": false,
+	"layers": {
+	"5": {
+      "H": 150,
+      "S": 30.1,
+      "L": 32.5
+    },
+	"4": {
+      "H": 143.8,
+      "S": 37.8,
+      "L": 35.3
+    },
+    "3": {
+      "H": 138.2,
+      "S": 34.8,
+      "L": 44.5
+    },
+    "2": {
+      "H": 127,
+      "S": 35.8,
+      "L": 57.8
+    },
+    "1": {
+      "H": 113.9,
+      "S": 43.4,
+      "L": 77.8
+    }}
   },
-  "#AE96D4": {
-    "name": "Matte Lilac Violet[PLA Matte]",
-	"active": false
+  "#BB3D43": {
+    "name": "Matte Dark Red[PLA Matte]",
+	"active": false,
+	"layers": {
+	"5": {
+      "H": 336.3,
+      "S": 30.6,
+      "L": 24.3
+    },
+	"4": {
+      "H": 344.2,
+      "S": 40.4,
+      "L": 27.6
+    },
+    "3": {
+      "H": 348.9,
+      "S": 46.3,
+      "L": 34.3
+    },
+    "2": {
+      "H": 352.3,
+      "S": 56.1,
+      "L": 43.7
+    },
+    "1": {
+      "H": 354.9,
+      "S": 66.1,
+      "L": 54.9
+    }}
   },
   "#F99963": {
     "name": "Matte Mandarin Orange[PLA Matte]",
+	"active": false,
+	"layers": {
+	"5": {
+      "H": 23.3,
+      "S": 81.4,
+      "L": 57.8
+    },
+	"4": {
+      "H": 28.2,
+      "S": 89.4,
+      "L": 59.4
+    },
+    "3": {
+      "H": 31.7,
+      "S": 95,
+      "L": 61
+    },
+    "2": {
+      "H": 35.7,
+      "S": 98.9,
+      "L": 62.7
+    },
+    "1": {
+      "H": 38.2,
+      "S": 100,
+      "L": 74.1
+    }}
+  },
+  "#AE96D4": {
+    "name": "Matte Lilac Violet[PLA Matte]",
 	"active": false
   },
   "#0078BF": {
@@ -383,10 +465,7 @@
     "name": "Matte Dark Green[PLA Matte]",
 	"active": false
   },
-  "#BB3D43": {
-    "name": "Matte Dark Red[PLA Matte]",
-	"active": false
-  },
+ 
   "#375172": {
     "name": "Matte Dark Blue[PLA Matte]",
 	"active": false

@@ -1,3 +1,8 @@
+<style>
+td, th {
+   border: none!important;
+}
+</style>
 # PIXEstL
 A program for creating color lithophane and pixel images.
 The program relies on a color palette that can be customized by adding its own filaments. This allows for the creation of lithophanes with an infinite variety of filaments.
@@ -50,64 +55,77 @@ Then :
 - Edit and customize the file "sample.bat" with your parameters (for example, change the image path).  
 - Edit and customize the file "filament-palette-0.10mm.json" for your filaments (for example, activate only 4 colors).
 
+## YouTube tutorial videos (in French)
+[![Présentation et première prise en main](https://img.youtube.com/vi/8y6Zytl4gRQ/0.jpg)](https://www.youtube.com/watch?v=8y6Zytl4gRQ)|
+[![La calibration des filaments](https://img.youtube.com/vi/1ErVSwkhZsk/0.jpg)](https://www.youtube.com/watch?v=1ErVSwkhZsk)|
+[![Lithophanie en 7 filaments avec 1 AMS](https://img.youtube.com/vi/eNYq8Aoz4VY/0.jpg)](https://www.youtube.com/watch?v=eNYq8Aoz4VY)|
+[![Faire une lithophanie avec bordures](https://img.youtube.com/vi/UnSNPAySEl0/0.jpg)](https://www.youtube.com/watch?v=UnSNPAySEl0)|
+
 ## Examples of results
 
 ### Color lithophanes
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 130 -d RGB -i Cafe_Terrace_at_Night.jpg
 ```
-<img src="attachment/Terrace_at_Night.jpg" width="500" alt="Terrace_at_Night"/>
+<img src="attachment/Terrace_at_Night.jpg" width="400" alt="Terrace_at_Night"/>
 
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -i mem.png
 ```
-<img src="attachment/memory_geisha.jpg" width="500" alt="memory_geisha"/>
+<img src="attachment/memory_geisha.jpg" width="400" alt="memory_geisha"/>
 
 ```
-java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -d RGB -i thanos.jpg
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -i starwars.jpg
 ```
-<img src="attachment/thanos.jpg" width="500" alt="thanos"/>
+<img src="attachment/starwars.webp" width="400" alt="starwars"/>
 
 ### Color lithophane with small texture layer
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 130 -d RGB -M 1.4 -i rainbow_infinity.png
 ``` 
-<img src="attachment/infinity.jpg" width="500" alt="infinity"/>
+<img src="attachment/infinity.jpg" width="400" alt="infinity"/>
 
 ### Lithophane with only texture layer
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -M 3 -w 150 -z false -i tsunami_Hokusai.jpg
 ``` 
-<img src="attachment/tsunami_hokusai.jpg" width="750" alt="tsunami_hokusai"/>
+<img src="attachment/tsunami_hokusai.jpg" width="600" alt="tsunami_hokusai"/>
 
 ### Lithophane of a face with underexposure and overexposure to light
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 100 -i Marilyn.jpg
 ```
-<img src="attachment/marilyn.jpg" width="500" alt="marilyn.jpg"/>
+<img src="attachment/marilyn.jpg" width="400" alt="marilyn.jpg"/>
 
 ### Lithophane with the new default color distance computation (CIELab)
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -M 1.5 -i Petals.jpg
 ```
-<img src="attachment/petals.jpg" width="500" alt="petals.jpg"/>
+<img src="attachment/petals.jpg" width="600" alt="petals.jpg"/>
 
 ### Lithophane from an image with transparency in the background
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 400 -d RGB -M 2 -i butterfly.png 
 ```
-<img src="attachment/butterfly.jpg" width="500" alt="marilyn.jpg"/>
+<img src="attachment/butterfly.jpg" width="600" alt="marilyn.jpg"/>
+
+### Lithophanes in black and white, with 3 filaments (Black, White and Silver)
+``` 
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 150 -cW 0.4 -i vegeta.jpg
+```
+<img src="attachment/vegeta.webp" width="600" alt="vegeta"/>
+
 
 ### Lithophanes in 7 filaments with only 1 AMS (pool of 4 filaments)
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 100 -M 1.7 -l 4 -c 4 -i Leon.png 
 ```
-<img src="attachment/Leon_1AMS.jpg" width="500" alt="Leon_1AMS.jpg"/>
+<img src="attachment/Leon_1AMS.jpg" width="400" alt="Leon_1AMS.jpg"/>
 
 ```
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 100 -M 1.7 -l 4 -c 4 -i Cafe_Terrace_at_Night.jpg
 ```
-<img src="attachment/Terrace_at_Night_1AMS.jpg" width="500" alt="Terrace_at_Night_1AMS"/>
+<img src="attachment/Terrace_at_Night_1AMS.jpg" width="400" alt="Terrace_at_Night_1AMS"/>
 
 ### Pixel Art image (with only color layers + FULL colors)
 ``` 
@@ -116,15 +134,18 @@ java -jar PIXEstL.jar -p filament-palette-0.10mm.json -w 200 -c 8 -F FULL -Z fal
 <img src="attachment/tsunami_hokusai_pixel.jpg" width="750" alt="tsunami_hokusai_pixel"/>
 
 ### Others lithophanes
+<table>
+<tr>
 
-<img src="attachment/ahsoka.jpg" width="300" alt="ahsoka.jpg"/>
-<img src="attachment/ryan.jpg" width="300" alt="ryan.jpg"/>
-<img src="attachment/cruella.jpg" width="300" alt="cruella.jpg"/>
-<img src="attachment/kingsman.jpg" width="300" alt="kingsman.jpg"/>
-<img src="attachment/seven_years_in_tibet.jpg" width="300" alt="seven_years_in_tibet.jpg"/>
-<img src="attachment/5th_element.jpg" width="300" alt="5th_element.jpg"/>
-<img src="attachment/warrior.jpg" width="300" alt="warrior.jpg"/>
-<img src="attachment/up.jpg" width="300" alt="up.jpg"/>
+<td><img src="attachment/dolphin.webp" width="300" alt="dolphin"/></td>
+<td><img src="attachment/deku.webp" width="300" alt="deku"/></td>
+<td><img src="attachment/halloween_globe.webp" width="300" alt="halloween_globe"/></td>
+<td><img src="attachment/hello_kitty_stand.webp" width="300" alt="hello_kitty"/></td>
+<td><img src="attachment/marvel.webp" width="300" alt="marvel"/></td>
+<td><img src="attachment/ryan.jpg" width="300" alt="ryan.jpg"/></td>
+<td><img src="attachment/ahsoka.jpg" width="300" alt="ahsoka.jpg"/></td>
+</tr>
+</table>
 
 
 ## The palette
