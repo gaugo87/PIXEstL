@@ -52,9 +52,8 @@ Then :
 
 ## YouTube tutorial channel (in French)
 
-https://www.youtube.com/@PIXEstL-nb5cq
 
-[![Présentation et première prise en main](https://img.youtube.com/vi/8y6Zytl4gRQ/0.jpg)](https://www.youtube.com/@PIXEstL-nb5cq)
+[![PIXEstL](attachment/PIXEstL_channel.png)](https://www.youtube.com/@PIXEstL-nb5cq)
 
 
 ## Examples of results
