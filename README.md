@@ -19,6 +19,7 @@ usage: PIXEstL
  -d,--colorDistanceComputation <arg>   Method for pixel color distance computation [RGB,CIELab]. Default: CIELab
  -F,--pixelCreationMethod <arg>        Method for pixel creation [ADDITIVE,FULL]. Default: ADDITIVE
  -f,--plateThickness <arg>             Thickness of the plate (mm). Default: 0.2
+ -H,--destImageHeight <arg>            Height of the destination image (mm).
  -i,--srcImagePath <arg>               Path to the source image.
  -l,--colorLayerNumber <arg>           Number of color pixel layers. Default: 5
  -M,--textureMaxThickness <arg>        Maximum thickness of the texture (mm). Default: 2.5

@@ -25,15 +25,27 @@ public class CSGThreadSupportRow extends CSGThreadRow
                 if (ColorUtil.hasATransparentPixelAsNeighbor(img, x, y)) continue;
             }
 
+            int k=1;
+            for (;x+k<width;k++)
+            {
+                if (ColorUtil.transparentPixel(img,x+k,y)) break;
+                if (transparentMode) {
+                    if (ColorUtil.hasATransparentPixelAsNeighbor(img, x+k, y)) break;
+                }
+            }
+            k--;
+
             double pixelWidth=csgWorkData.getGenInstruction().getColorPixelWidth();
             double plateThickness=csgWorkData.getGenInstruction().getPlateThickness();
 
-            CSG square = new Cube(pixelWidth, pixelWidth,plateThickness).toCSG();
-            Transform transform = Transform.unity().translateX(x*pixelWidth)
+            CSG square = new Cube(pixelWidth+pixelWidth*k, pixelWidth,plateThickness).toCSG();
+            Transform transform = Transform.unity().translateX(x*pixelWidth+(pixelWidth*(1+k)/2))
                     .translateY(y*pixelWidth)
                     .translateZ(((plateThickness/2)-plateThickness));
             square = square.transformed(transform);
             polygonList.addAll(square.getPolygons());
+
+            x+=k;
         }
         
 	}

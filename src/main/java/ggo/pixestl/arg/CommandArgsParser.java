@@ -28,7 +28,9 @@ public class CommandArgsParser extends GenInstruction {
 	
 		reqArgList.add(new Option("i", "srcImagePath", true, "Path to the source image."));
 		reqArgList.add(new Option("p", "palettePath", true, "Path to the palette file."));
-		reqArgList.add(new Option("w", "destImageWidth", true, "Width of the destination image (mm)."));
+
+		optArgList.add(new Option("w", "destImageWidth", true, "Width of the destination image (mm)."));
+		optArgList.add(new Option("H", "destImageHeight", true, "Height of the destination image (mm)."));
 
 		optArgList.add(new Option("o", "destZipPath", true, "Destination ZIP file path.\nDefault: <-image>.zip"));
 		optArgList.add(new Option("c", "colorNumber", true, "Maximum number of color number.\nDefault: no limits"));
@@ -101,6 +103,11 @@ public class CommandArgsParser extends GenInstruction {
         	}
         }
 		genInstruction.setDebug(line.hasOption("X"));
+		if (!line.hasOption("w") && !line.hasOption("H"))
+		{
+			throw new IllegalArgumentException("A width or a height is mandatory");
+		}
+
         if (genInstruction.getDestZipPath() == null)
         {
 	        String outName=genInstruction.getSrcImagePath();
@@ -128,6 +135,10 @@ public class CommandArgsParser extends GenInstruction {
 	
 	public void setDestImageWidthString(String destImageWidth) {
 		this.destImageWidth = Double.parseDouble(destImageWidth);
+	}
+
+	public void setDestImageHeightString(String destImageHeight) {
+		this.destImageHeight = Double.parseDouble(destImageHeight);
 	}
 	
 	public void setPixelCreationMethodString(String pixelCreationMethodString)

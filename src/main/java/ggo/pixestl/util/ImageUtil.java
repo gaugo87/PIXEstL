@@ -4,18 +4,56 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 public class ImageUtil
 {
+
+    public static void checkRatio(BufferedImage image, double imageWidthMm, double imageHeightMm)
+    {
+        if(imageWidthMm == 0 || imageHeightMm== 0) return;
+        int height = image.getHeight();
+        int width = image.getWidth();
+
+        double ratioSrc = (double)width/(double)height;
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        String ratioSrcString = decimalFormat.format(ratioSrc);
+
+        double ratioDest = imageWidthMm / imageHeightMm;
+        String ratioDestString = decimalFormat.format(ratioDest);
+
+        if (!ratioSrcString.equals(ratioDestString))
+        {
+            System.out.println("Warning : The image ratio is not preserved. (Source ratio:"+ratioSrcString+"; Destination ratio:"+ratioDestString+")");
+        }
+    }
+
 	
-	
-	public static BufferedImage resizeImage(BufferedImage image, double imageWidthMm, double pixelMm) {
+	public static BufferedImage resizeImage(BufferedImage image, double imageWidthMm, double imageHeightMm, double pixelMm) {
 		int height = image.getHeight();
 		int width = image.getWidth();
-		
-		int nbPixelWidth = (int)(imageWidthMm / pixelMm);
-		int heightMm = (int)(height*imageWidthMm/width);
-		int nbPixelHeight = (int)(heightMm / pixelMm);
+
+        int nbPixelWidth;
+        int nbPixelHeight;
+
+        if (imageWidthMm != 0 && imageHeightMm == 0)
+        {
+            nbPixelWidth = (int)(imageWidthMm / pixelMm);
+            int heightMm = (int)(height*imageWidthMm/width);
+            nbPixelHeight = (int)(heightMm / pixelMm);
+        }
+		else if (imageWidthMm == 0 && imageHeightMm != 0)
+        {
+            nbPixelHeight = (int)(imageHeightMm / pixelMm);
+            int widthMm = (int)(width*imageHeightMm/height);
+            nbPixelWidth = (int)(widthMm / pixelMm);
+        }
+        else
+        {
+            nbPixelWidth = (int)(imageWidthMm / pixelMm);
+            nbPixelHeight = (int)(imageHeightMm / pixelMm);
+        }
         
         BufferedImage resizedImage = new BufferedImage(nbPixelWidth, nbPixelHeight, image.getType());
         Graphics2D g2d = resizedImage.createGraphics();

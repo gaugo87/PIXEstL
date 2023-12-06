@@ -32,6 +32,14 @@ public class CSGThreadColorRow extends CSGThreadRow
                 }
 
                 int pixel = img.getRGB(x, y);
+                int k=1;
+                int pixelNext;
+                for (;x+k<width;k++)
+                {
+                    pixelNext = img.getRGB(x+k, y);
+                    if (pixelNext != pixel) break;
+                }
+                k--;
 
                 Color pixelColor = new Color(pixel);
 
@@ -80,13 +88,15 @@ public class CSGThreadColorRow extends CSGThreadRow
 
                     double pixelWidth = csgWorkData.getGenInstruction().getColorPixelWidth();
 
-                    CSG square = new Cube(pixelWidth, pixelWidth, curPixelHeight).toCSG();
+                    CSG square = new Cube(pixelWidth+k*pixelWidth, pixelWidth, curPixelHeight).toCSG();
                     Transform transform = Transform.unity()
-                            .translateX(x * pixelWidth)
+                            .translateX(x*pixelWidth+(pixelWidth*k)/2)
                             .translateY(y * pixelWidth)
                             .translateZ(curPixelHeightAdjust);
                     square = square.transformed(transform);
                     polygonList.addAll(square.getPolygons());
+
+                    x+=k;
                 }
             }
         }

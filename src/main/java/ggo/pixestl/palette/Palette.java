@@ -325,7 +325,7 @@ public class Palette
 	
 	public void restrictFullColors(BufferedImage image,int colorNumber) {
 		
-		BufferedImage pixelatedImage = ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(), genInstruction.getColorPixelWidth());
+		BufferedImage pixelatedImage = ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(),genInstruction.getDestImageHeight(), genInstruction.getColorPixelWidth());
 		BufferedImage quantizedImage = quantizeColors(pixelatedImage);
 		
 		Map<String, Integer> colorCounts = new HashMap<>();

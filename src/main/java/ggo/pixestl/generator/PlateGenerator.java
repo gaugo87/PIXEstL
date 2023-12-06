@@ -33,6 +33,8 @@ public class PlateGenerator {
 		System.out.println("("+palette.getColors().size()+" colors found)");
 		
 		BufferedImage image = ImageIO.read(srcImageFile);
+
+		ImageUtil.checkRatio(image,genInstruction.destImageWidth,genInstruction.getDestImageHeight());
 		
 		if (GenInstruction.PixelCreationMethod.FULL == genInstruction.pixelCreationMethod && genInstruction.getColorNumber()!=0)
 		{
@@ -45,11 +47,11 @@ public class PlateGenerator {
 		
 		if (genInstruction.isColorLayer())
 		{
-			BufferedImage colorImage=ImageUtil.resizeImage(image, genInstruction.getDestImageWidth(),genInstruction.getColorPixelWidth());
+			BufferedImage colorImage=ImageUtil.resizeImage(image, genInstruction.getDestImageWidth(),genInstruction.getDestImageHeight(),genInstruction.getColorPixelWidth());
 			System.out.println("Calculating color distances with the image...");
 			quantizedColorImage = palette.quantizeColors(colorImage);
 		}
-		if (genInstruction.isTextureLayer()) textureImage=ImageUtil.convertToBlackAndWhite(ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(),genInstruction.getTexturePixelWidth()));
+		if (genInstruction.isTextureLayer()) textureImage=ImageUtil.convertToBlackAndWhite(ImageUtil.resizeImage(image,genInstruction.getDestImageWidth(),genInstruction.getDestImageHeight(),genInstruction.getTexturePixelWidth()));
 		
 		BufferedImage flipColorImage =quantizedColorImage!=null?ImageUtil.flipImage(quantizedColorImage):null;
 		BufferedImage flipTextureImage = textureImage!=null?ImageUtil.flipImage(textureImage):null;

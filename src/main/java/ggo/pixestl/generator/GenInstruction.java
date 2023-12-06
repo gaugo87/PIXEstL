@@ -40,6 +40,8 @@ public class GenInstruction
 	protected ColorDistanceComputation colorDistanceComputation = ColorDistanceComputation.CIELab;
 	
 	protected double destImageWidth=0; //mm
+
+	protected double destImageHeight=0; //mm
 	
 	protected double plateThickness=DEFAULT_VALUE_PLATE_THICKNESS; //mm
 	
@@ -83,6 +85,9 @@ public class GenInstruction
 	}
 	public double getDestImageWidth() {
 		return destImageWidth;
+	}
+	public double getDestImageHeight() {
+		return destImageHeight;
 	}
 	public double getColorPixelWidth() {
 		return colorPixelWidth;
