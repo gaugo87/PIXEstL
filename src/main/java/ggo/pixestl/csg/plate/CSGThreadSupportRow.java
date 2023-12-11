@@ -39,7 +39,7 @@ public class CSGThreadSupportRow extends CSGThreadRow
             double plateThickness=csgWorkData.getGenInstruction().getPlateThickness();
 
             CSG square = new Cube(pixelWidth+pixelWidth*k, pixelWidth,plateThickness).toCSG();
-            Transform transform = Transform.unity().translateX(x*pixelWidth+(pixelWidth*(1+k)/2))
+            Transform transform = Transform.unity().translateX(x*pixelWidth+(pixelWidth*k)/2)
                     .translateY(y*pixelWidth)
                     .translateZ(((plateThickness/2)-plateThickness));
             square = square.transformed(transform);

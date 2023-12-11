@@ -38,6 +38,7 @@ public class CSGThreadColorRow extends CSGThreadRow
                 {
                     pixelNext = img.getRGB(x+k, y);
                     if (pixelNext != pixel) break;
+                    else if (ColorUtil.hasATransparentPixelAsNeighbor(img, x+k, y)) break;
                 }
                 k--;
 
@@ -54,7 +55,7 @@ public class CSGThreadColorRow extends CSGThreadRow
                     if (layerHeight == 0) continue;
                     double onePixelHeightSize = csgWorkData.getGenInstruction().getColorPixelLayerThickness();
 
-                    int layerBefore = colorCombi.getLayerPosition(csgWorkData.getPalette(), layer);
+                    int layerBefore = colorCombi.getLayerPosition(layer);
 
                     if (csgWorkData.getOffset() != -1 && csgWorkData.getLayerMax() != -1) {
                         if (layerBefore >= csgWorkData.getOffset() + csgWorkData.getLayerMax()) continue;
@@ -96,8 +97,9 @@ public class CSGThreadColorRow extends CSGThreadRow
                     square = square.transformed(transform);
                     polygonList.addAll(square.getPolygons());
 
-                    x+=k;
+
                 }
+                x+=k;
             }
         }
 	}

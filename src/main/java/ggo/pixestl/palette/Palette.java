@@ -288,6 +288,7 @@ public class Palette
 
 		for (ColorCombi c : finalCombiList)
 		{
+			c.factorize();
 			quantizedColors.put(c.getColor(genInstruction),c);
 		}
 

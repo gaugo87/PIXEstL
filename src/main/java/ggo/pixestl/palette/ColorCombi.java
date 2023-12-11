@@ -9,7 +9,7 @@ import ggo.pixestl.util.ColorUtil;
 
 public class ColorCombi {
 	
-	final List<ColorLayer> layers;
+	List<ColorLayer> layers;
 	
 	private ColorCombi()
 	{
@@ -38,11 +38,7 @@ public class ColorCombi {
 	public ColorCombi combineLithoColorCombi(ColorCombi ColorCombi2)
 	{
 		ColorCombi c = duplicate();
-		for (ColorLayer colorLayer2 :ColorCombi2.getLayers())
-		{
-			c.layers.add(colorLayer2);
-
-		}
+		c.layers.addAll(ColorCombi2.getLayers());
 		return c;
 	}
 
@@ -76,6 +72,8 @@ public class ColorCombi {
 			if (genInstruction.isDebug()) {
 				System.out.print(lithoColorLayer.getHexCode() + "[" + lithoColorLayer.getLayer() + "]");
 			}
+			if (lithoColorLayer.getC()+lithoColorLayer.getM()+lithoColorLayer.getY() == 0
+				&& c+m+y==0) continue;
 			c+=lithoColorLayer.getC();	
 			m+=lithoColorLayer.getM();
 			y+=lithoColorLayer.getY();
@@ -95,6 +93,31 @@ public class ColorCombi {
 		return c;		
 	}
 
+	protected void factorize()
+	{
+		List<ColorLayer> newLayers = new ArrayList<>();
+		for (int i=0; i< getLayers().size();i++)
+		{
+			ColorLayer currL= getLayers().get(i);
+			if (i==0)
+			{
+				newLayers.add(currL);
+				continue;
+			}
+			ColorLayer lastL= newLayers.get(newLayers.size()-1);
+
+			if (lastL.getHexCode().equals(currL.getHexCode()))
+			{
+				newLayers.remove(lastL);
+				newLayers.add(new ColorLayer(lastL.getHexCode(),lastL.getLayer()+currL.getLayer(),lastL.getC(),lastL.getM(),lastL.getY(),lastL.getK()));
+			}
+			else {
+				newLayers.add(currL);
+			}
+		}
+		layers=newLayers;
+	}
+
 	public List<ColorLayer> getLayerList(String hexCode)
 	{
 		List<ColorLayer> resLayerList = new ArrayList<>();
@@ -105,20 +128,8 @@ public class ColorCombi {
 		}
 		return resLayerList;
 	}
-	
-	/*public int getLayerHeight(String hexCode)
-	{
-		ColorLayer lCL = null;
-		for (ColorLayer layer : layers) {
-			if (layer.getHexCode().equals(hexCode)) {
-				lCL = layer;
-				break;
-			}
-		}
-		return lCL!=null?lCL.getLayer():0;
-	}*/
 
-	public int getLayerPosition(Palette palette, ColorLayer layer )
+	public int getLayerPosition(ColorLayer layer )
 	{
 
 		int nbLayerBeforeThisColor=0;
@@ -133,20 +144,6 @@ public class ColorCombi {
 		}
 		return nbLayerBeforeThisColor;
 	}
-	
-	public int getLayerPosition(Palette palette, String hexCode)
-	{
-
-		int nbLayerBeforeThisColor=0;
-		for (ColorLayer layer : layers)
-		{
-			if (hexCode.equals(layer.getHexCode())) break;
-			//else
-			nbLayerBeforeThisColor+=layer.getLayer();
-		}
-		return nbLayerBeforeThisColor;
-	}
-
 	public List<ColorLayer> getLayers() {
 		return layers;
 	}
