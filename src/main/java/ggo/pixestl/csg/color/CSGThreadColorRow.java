@@ -1,20 +1,26 @@
 package ggo.pixestl.csg.color;
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.util.List;
-
 import eu.mihosoft.jcsg.CSG;
 import eu.mihosoft.jcsg.Cube;
 import eu.mihosoft.vvecmath.Transform;
+import ggo.pixestl.csg.CSGThread;
 import ggo.pixestl.csg.CSGThreadRow;
 import ggo.pixestl.palette.ColorCombi;
 import ggo.pixestl.palette.ColorLayer;
 import ggo.pixestl.util.ColorUtil;
 import ggo.pixestl.util.ImageUtil;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.List;
+
 public class CSGThreadColorRow extends CSGThreadRow
 {
+
+    public CSGThreadColorRow(CSGThread csgThread)
+    {
+        super(csgThread);
+    }
 	public void run()
 	{
 		int width = csgWorkData.getColorImage().getWidth();
@@ -95,9 +101,8 @@ public class CSGThreadColorRow extends CSGThreadRow
                             .translateY(y * pixelWidth)
                             .translateZ(curPixelHeightAdjust);
                     square = square.transformed(transform);
-                    polygonList.addAll(square.getPolygons());
 
-
+                    savePolygonList(square.getPolygons());
                 }
                 x+=k;
             }

@@ -1,16 +1,31 @@
 package ggo.pixestl.csg.texture;
 
-import java.awt.Color;
+import eu.mihosoft.jcsg.CSG;
+import eu.mihosoft.jcsg.Polygon;
+import eu.mihosoft.vvecmath.Transform;
+import eu.mihosoft.vvecmath.Vector3d;
+import ggo.pixestl.csg.CSGThread;
+import ggo.pixestl.csg.CSGThreadRow;
+import ggo.pixestl.generator.GenInstruction;
+import ggo.pixestl.util.ColorUtil;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import eu.mihosoft.jcsg.Polygon;
-import eu.mihosoft.vvecmath.Vector3d;
-import ggo.pixestl.csg.CSGThreadRow;
-import ggo.pixestl.util.ColorUtil;
 
 public class CSGThreadTextureRow extends CSGThreadRow
 {
-	public void run() {
+
+    Transform transform = null;
+
+    public CSGThreadTextureRow(CSGThread csgThread)
+    {
+        super(csgThread);
+
+    }
+
+	public void run()
+    {
         int width = csgWorkData.getTexturedImage().getWidth();
         int height = csgWorkData.getTexturedImage().getHeight();
 
@@ -32,7 +47,10 @@ public class CSGThreadTextureRow extends CSGThreadRow
 
         if (y == height - 1) return; //no need to manage the last row
 
-        for (int x = 0; x < width; x++) {
+        for (int x = 0; x < width; x++)
+        {
+            List<Polygon> localPolygonList = new ArrayList<>();
+
             if (x == width - 1) continue; //no need to manage the last column
 
             double i = x * pixelWidth;
@@ -52,20 +70,20 @@ public class CSGThreadTextureRow extends CSGThreadRow
                 triangle1.add(Vector3d.xyz(i, j, getPixelHeight(x, y)));
                 triangle1.add(Vector3d.xyz(i, j1, getPixelHeight(x, y + 1)));
                 triangle1.add(Vector3d.xyz(i, j1, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel,curve, triangle1)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel,curve, triangle1)));
 
                 List<Vector3d> triangle2 = new ArrayList<>();
                 triangle2.add(Vector3d.xyz(i, j, getPixelHeight(x, y)));
                 triangle2.add(Vector3d.xyz(i, j, 0));
                 triangle2.add(Vector3d.xyz(i, j1, 0));
-                polygonList.add(Polygon.fromPoints(triangle2));
+                localPolygonList.add(Polygon.fromPoints(triangle2));
 
                 if (curve==0) {
                     List<Vector3d> triangle3 = new ArrayList<>();
                     triangle3.add(Vector3d.xyz(i, j, 0));
                     triangle3.add(Vector3d.xyz(i, j1, 0));
                     triangle3.add(Vector3d.xyz(iMid, jMid, 0));
-                    polygonList.add(Polygon.fromPoints(triangle3));
+                    localPolygonList.add(Polygon.fromPoints(triangle3));
                 }
             }
 
@@ -74,20 +92,20 @@ public class CSGThreadTextureRow extends CSGThreadRow
                 triangle1.add(Vector3d.xyz(i, j, getPixelHeight(x, y)));
                 triangle1.add(Vector3d.xyz(i1, j, getPixelHeight(x + 1, y)));
                 triangle1.add(Vector3d.xyz(i1, j, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
 
                 List<Vector3d> triangle2 = new ArrayList<>();
                 triangle2.add(Vector3d.xyz(i, j, getPixelHeight(x, y)));
                 triangle2.add(Vector3d.xyz(i, j, 0));
                 triangle2.add(Vector3d.xyz(i1, j, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
 
                 if (curve==0) {
                     List<Vector3d> triangle3 = new ArrayList<>();
                     triangle3.add(Vector3d.xyz(i, j, 0));
                     triangle3.add(Vector3d.xyz(i1, j, 0));
                     triangle3.add(Vector3d.xyz(iMid, jMid, 0));
-                    polygonList.add(Polygon.fromPoints(triangle3));
+                    localPolygonList.add(Polygon.fromPoints(triangle3));
                 }
             }
 
@@ -96,20 +114,20 @@ public class CSGThreadTextureRow extends CSGThreadRow
                 triangle1.add(Vector3d.xyz(i1, j, getPixelHeight(x + 1, y)));
                 triangle1.add(Vector3d.xyz(i1, j1, getPixelHeight(x + 1, y + 1)));
                 triangle1.add(Vector3d.xyz(i1, j1, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
 
                 List<Vector3d> triangle2 = new ArrayList<>();
                 triangle2.add(Vector3d.xyz(i1, j, getPixelHeight(x + 1, y)));
                 triangle2.add(Vector3d.xyz(i1, j, 0));
                 triangle2.add(Vector3d.xyz(i1, j1, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
 
                 if (curve==0) {
                     List<Vector3d> triangle3 = new ArrayList<>();
                     triangle3.add(Vector3d.xyz(i1, j, 0));
                     triangle3.add(Vector3d.xyz(i1, j1, 0));
                     triangle3.add(Vector3d.xyz(iMid, jMid, 0));
-                    polygonList.add(Polygon.fromPoints(triangle3));
+                    localPolygonList.add(Polygon.fromPoints(triangle3));
                 }
             }
 
@@ -118,20 +136,20 @@ public class CSGThreadTextureRow extends CSGThreadRow
                 triangle1.add(Vector3d.xyz(i, j1, getPixelHeight(x, y + 1)));
                 triangle1.add(Vector3d.xyz(i1, j1, getPixelHeight(x + 1, y + 1)));
                 triangle1.add(Vector3d.xyz(i1, j1, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
 
                 List<Vector3d> triangle2 = new ArrayList<>();
                 triangle2.add(Vector3d.xyz(i, j1, getPixelHeight(x, y + 1)));
                 triangle2.add(Vector3d.xyz(i, j1, 0));
                 triangle2.add(Vector3d.xyz(i1, j1, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
 
                 if (curve==0) {
                     List<Vector3d> triangle3 = new ArrayList<>();
                     triangle3.add(Vector3d.xyz(i, j1, 0));
                     triangle3.add(Vector3d.xyz(i1, j1, 0));
                     triangle3.add(Vector3d.xyz(iMid, jMid, 0));
-                    polygonList.add(Polygon.fromPoints(triangle3));
+                    localPolygonList.add(Polygon.fromPoints(triangle3));
                 }
             }
 
@@ -139,13 +157,13 @@ public class CSGThreadTextureRow extends CSGThreadRow
             triangle1.add(Vector3d.xyz(i, j, getPixelHeight(x, y)));
             triangle1.add(Vector3d.xyz(i, j1, getPixelHeight(x, y + 1)));
             triangle1.add(Vector3d.xyz(i1, j, getPixelHeight(x + 1, y)));
-            polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
+            localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle1)));
 
             List<Vector3d> triangle2 = new ArrayList<>();
             triangle2.add(Vector3d.xyz(i1, j1, getPixelHeight(x + 1, y + 1)));
             triangle2.add(Vector3d.xyz(i, j1, getPixelHeight(x, y + 1)));
             triangle2.add(Vector3d.xyz(i1, j, getPixelHeight(x + 1, y)));
-            polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
+            localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle2)));
 
             if (curve!=0 && y==0)
             {
@@ -153,20 +171,52 @@ public class CSGThreadTextureRow extends CSGThreadRow
                 triangle3.add(Vector3d.xyz(i, 0, 0));
                 triangle3.add(Vector3d.xyz(i, height*pixelWidth, 0));
                 triangle3.add(Vector3d.xyz(i1, 0, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle3)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle3)));
 
                 List<Vector3d> triangle4 = new ArrayList<>();
                 triangle4.add(Vector3d.xyz(i1, height*pixelWidth, 0));
                 triangle4.add(Vector3d.xyz(i, height*pixelWidth, 0));
                 triangle4.add(Vector3d.xyz(i1, 0, 0));
-                polygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle4)));
+                localPolygonList.add(Polygon.fromPoints(curveTriangleList(widthPixel, curve, triangle4)));
             }
+            savePolygonList(localPolygonList);
         }
-
 
     }
 
-    private List<Vector3d> curveTriangleList(double width,double curve,List<Vector3d> triangleList)
+    @Override
+    protected void savePolygonList(List<Polygon> polygonList)
+    {
+
+        if (csgWorkData.getGenInstruction().isColorLayer())
+        {
+            GenInstruction g = csgWorkData.getGenInstruction();
+            double tW=csgWorkData.getTexturedImage().getWidth()*g.getTexturePixelWidth();
+            double tH=csgWorkData.getTexturedImage().getHeight()*g.getTexturePixelWidth();
+
+            double cW=csgWorkData.getColorImage().getWidth()*g.getColorPixelWidth();
+            double cH=csgWorkData.getColorImage().getHeight()*g.getColorPixelWidth();
+
+            double diffW=tW-cW;
+            double diffH=tH-cH;
+
+            transform = Transform.unity()
+                    .translateX(-diffW/2-(g.getColorPixelWidth()-g.getTexturePixelWidth())/2)
+                    .translateY(-diffH/2-(g.getColorPixelWidth()-g.getTexturePixelWidth())/2)
+                    .translateZ(csgWorkData.getGenInstruction().getColorPixelLayerThickness()*csgWorkData.getPalette().getLayerCount());
+        }
+
+        List<Polygon> tempPolygonList=polygonList;
+        if (transform != null)
+        {
+            CSG csg = CSG.fromPolygons(polygonList);
+            csg = csg.transformed(transform);
+            tempPolygonList=csg.getPolygons();
+        }
+        super.savePolygonList(tempPolygonList);
+    }
+
+    private List<Vector3d> curveTriangleList(double width, double curve, List<Vector3d> triangleList)
     {
         if (curve == 0.0) return triangleList;
 

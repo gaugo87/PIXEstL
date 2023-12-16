@@ -174,22 +174,18 @@ public class StlMaker {
 
 		if (csgSupportPlate != null)
 		{
-			String stlString=csgSupportPlate.writeSTLString();
 			ZipEntry zipEntry = new ZipEntry("layer-plate.stl");
 			zipOut.putNextEntry(zipEntry);
-			byte[] stl = stlString.getBytes();
-			zipOut.write(stl,0,stl.length);
+			csgSupportPlate.writeSTLString(zipOut);
 			zipOut.closeEntry();
 		}
 
     	for (CSGThreadColor stlGeneration : csgThreadColors)
     	{
-    		String stlString=stlGeneration.writeSTLString();
-    		if (stlString == null) continue;
+    		if (!stlGeneration.hasSTL()) continue;
     		ZipEntry zipEntry = new ZipEntry(stlGeneration.getThreadName()+".stl");
     		zipOut.putNextEntry(zipEntry);
-    		byte[] stl = stlString.getBytes();    		
-    		zipOut.write(stl,0,stl.length);
+			stlGeneration.writeSTLString(zipOut);
     		zipOut.closeEntry();    		
     	}
 
@@ -199,7 +195,7 @@ public class StlMaker {
 			System.out.println(instructions);
 			ZipEntry  zipEntry = new ZipEntry("instructions.txt");
 			zipOut.putNextEntry(zipEntry);
-			byte[] b = instructions.toString().getBytes(Charset.defaultCharset());
+			byte[] b = instructions.getBytes(Charset.defaultCharset());
 			zipOut.write(b,0,b.length);
 			zipOut.closeEntry();
 
@@ -207,11 +203,9 @@ public class StlMaker {
     	
     	if (csgThreadTexture != null)
     	{
-    		String stlString=csgThreadTexture.writeSTLString();
         	ZipEntry  zipEntry = new ZipEntry(csgThreadTexture.getThreadName()+".stl");
-    		zipOut.putNextEntry(zipEntry);		
-    		byte[] stl = stlString.getBytes();		
-    		zipOut.write(stl,0,stl.length);
+    		zipOut.putNextEntry(zipEntry);
+			csgThreadTexture.writeSTLString(zipOut);
     		zipOut.closeEntry(); 
     	}
 

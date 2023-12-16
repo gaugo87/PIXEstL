@@ -1,10 +1,9 @@
 package ggo.pixestl.csg.texture;
 
-import java.awt.image.BufferedImage;
-import eu.mihosoft.vvecmath.Transform;
 import ggo.pixestl.csg.CSGThread;
 import ggo.pixestl.csg.CSGWorkData;
-import ggo.pixestl.generator.GenInstruction;
+
+import java.awt.image.BufferedImage;
 
 public class CSGThreadTexture extends CSGThread
 {
@@ -14,26 +13,7 @@ public class CSGThreadTexture extends CSGThread
 	}
 	public void postProcessing()
 	{
-		if (csg == null) return;
-        if (csgWorkData.getGenInstruction().isColorLayer())
-        {
-        	GenInstruction g = csgWorkData.getGenInstruction();
-        	
-        	double tW=csgWorkData.getTexturedImage().getWidth()*g.getTexturePixelWidth();
-        	double tH=csgWorkData.getTexturedImage().getHeight()*g.getTexturePixelWidth();
-        	
-        	double cW=csgWorkData.getColorImage().getWidth()*g.getColorPixelWidth();
-        	double cH=csgWorkData.getColorImage().getHeight()*g.getColorPixelWidth();
-        	
-        	double diffW=tW-cW;
-        	double diffH=tH-cH;
-        	
-	        Transform transform = Transform.unity()
-	        		.translateX(-diffW/2-(g.getColorPixelWidth()-g.getTexturePixelWidth())/2)
-	        		.translateY(-diffH/2-(g.getColorPixelWidth()-g.getTexturePixelWidth())/2)
-	        		.translateZ(csgWorkData.getGenInstruction().getColorPixelLayerThickness()*csgWorkData.getPalette().getLayerCount());
-	        csg = csg.transformed(transform);
-        }
+		//Nothing
 	}
 
 	@Override

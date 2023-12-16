@@ -28,10 +28,11 @@ usage: PIXEstL
  -N,--rowThreadMaxNumber <arg>         Number of threads for rows generation. Default: number of cores available
  -o,--destZipPath <arg>                Destination ZIP file path. Default: <-image>.zip
  -p,--palettePath <arg>                Path to the palette file.
- -t,--layerThreadTimeout <arg>         Timeout for layer threads (second). Default: 120
- -T,--rowThreadTimeout <arg>           Timeout for row threads (second). Default : 60
+ -t,--layerThreadTimeout <arg>         Timeout for layer threads (second). Default: 300
+ -T,--rowThreadTimeout <arg>           Timeout for row threads (second). Default : 120
  -tW,--texturePixelWidth <arg>         Width of texture pixels (mm). Default: 0.25
  -w,--destImageWidth <arg>             Width of the destination image (mm).
+ -Y,--lowMemory                        Low Memory mode (Use temp files to store polygons)
  -X,--debug                            Debug mode
  -z,--colorLayer <arg>                 Color layers will generate or not. Default : true
  -Z,--textureLayer <arg>               Texture layers will generate or not. Default : true

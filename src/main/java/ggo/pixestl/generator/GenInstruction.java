@@ -19,10 +19,10 @@ public class GenInstruction
 	public static final double DEFAULT_VALUE_TEXTURE_MAX_THICKNESS=1.8;
 	public static final double DEFAULT_VALUE_TEXTURE_MIN_THICKNESS=0.3;
 	public static final double DEFAULT_VALUE_TEXTURE_PIXEL_WIDTH=0.25;
-	public static final int DEFAULT_VALUE_LAYER_THREAD_TIMEOUT=120;
+	public static final int DEFAULT_VALUE_LAYER_THREAD_TIMEOUT=300;
 	public static final int DEFAULT_VALUE_ROW_THREAD_MAX_NUMBER=Runtime.getRuntime().availableProcessors();
 	public static final int DEFAULT_VALUE_LAYER_THREAD_MAX_NUMBER=0;
-	public static final int DEFAULT_VALUE_ROW_THREAD_TIMEOUT=60;
+	public static final int DEFAULT_VALUE_ROW_THREAD_TIMEOUT=120;
 	public static final boolean DEFAULT_VALUE_COLOR_LAYER=true;
 	public static final boolean DEFAULT_VALUE_TEXTURE_LAYER=true;
 
@@ -65,6 +65,7 @@ public class GenInstruction
 	protected boolean textureLayer=DEFAULT_VALUE_TEXTURE_LAYER;
 
 	protected boolean debug = false;
+	protected boolean lowMemory = false;
 		
 	public GenInstruction()
 	{
@@ -138,6 +139,11 @@ public class GenInstruction
 		return textureLayer;
 	}
 	public void setDebug(boolean debug) { this.debug=debug; }
+
+	public void setLowMemory(boolean lowMemory) { this.lowMemory=lowMemory; }
+
+	public boolean isLowMemory() { return lowMemory; }
+
 	public boolean isDebug() { return debug; }
 
 	public double getCurve() {

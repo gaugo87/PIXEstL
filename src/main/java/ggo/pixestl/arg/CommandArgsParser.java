@@ -49,6 +49,8 @@ public class CommandArgsParser extends GenInstruction {
 		optArgList.add(new Option("T", "rowThreadTimeout", true, "Timeout for row threads (second).\nDefault : "+GenInstruction.DEFAULT_VALUE_ROW_THREAD_TIMEOUT));
 		optArgList.add(new Option("X", "debug", false, "Debug mode"));
 
+		optArgList.add(new Option("Y", "lowMemory", false, "Low Memory mode (Use temp files to store polygons)"));
+
 		optArgList.add(new Option("C", "curve", true, "Curve parameter.\nDefault: no curve"));
 		
 		optArgList.add(new Option("z", "colorLayer", true, "Color layers will generate or not. Default : "+DEFAULT_VALUE_COLOR_LAYER));
@@ -103,6 +105,8 @@ public class CommandArgsParser extends GenInstruction {
         	}
         }
 		genInstruction.setDebug(line.hasOption("X"));
+		genInstruction.setLowMemory(line.hasOption("Y"));
+
 		if (!line.hasOption("w") && !line.hasOption("H"))
 		{
 			throw new IllegalArgumentException("A width or a height is mandatory");
@@ -195,7 +199,7 @@ public class CommandArgsParser extends GenInstruction {
 		this.layerThreadMaxNumber = Integer.parseInt(layerThreadMaxNumberString);
 	}
 
-	public void setRowThreadNumberString(String rowThreadNumberString) {
+	public void setRowThreadMaxNumberString(String rowThreadNumberString) {
 		this.rowThreadNumber = Integer.parseInt(rowThreadNumberString);
 	}
 

@@ -3,6 +3,7 @@ package ggo.pixestl.csg.plate;
 import eu.mihosoft.jcsg.CSG;
 import eu.mihosoft.jcsg.Cube;
 import eu.mihosoft.vvecmath.Transform;
+import ggo.pixestl.csg.CSGThread;
 import ggo.pixestl.csg.CSGThreadRow;
 import ggo.pixestl.util.ColorUtil;
 import ggo.pixestl.util.ImageUtil;
@@ -11,6 +12,11 @@ import java.awt.image.BufferedImage;
 
 public class CSGThreadSupportRow extends CSGThreadRow
 {
+    public CSGThreadSupportRow(CSGThread csgThread)
+    {
+        super(csgThread);
+    }
+
 	public void run()
 	{
 		int width = csgWorkData.getColorImage().getWidth();
@@ -43,8 +49,8 @@ public class CSGThreadSupportRow extends CSGThreadRow
                     .translateY(y*pixelWidth)
                     .translateZ(((plateThickness/2)-plateThickness));
             square = square.transformed(transform);
-            polygonList.addAll(square.getPolygons());
 
+            savePolygonList(square.getPolygons());
             x+=k;
         }
         
