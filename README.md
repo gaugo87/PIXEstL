@@ -166,9 +166,7 @@ The palette is composed of a JSON structure that gathers all the filaments you h
       "L": 69.6
     },
     "1": {
-      "H": 202.4,
-      "S": 81,
-      "L": 79
+      "hexcode": "#92D6FD"
     }
   }
 }
@@ -178,7 +176,8 @@ The palette is composed of a JSON structure that gathers all the filaments you h
   - `"active"`: true: This is a boolean indicator to determine if the filament is active (true) or not (false).
   - `"layers"`: This is an object that contains the different layers of the filament.
     - `"5"`, `"4"`, etc. : These are the keys for each layer of the filament. Each layer has an associated number. (Ex: 0.5mm, 0.4mm, 0.3mm if you work with layers of 0.1mm )  
-    "H", "S", "L": These are the chromatic properties of each layer.
+    Either "hexcode" represents the value of the layer in hexadecimal.  
+    or "H", "S", "L": These are the chromatic properties of each layer.
       - "H" represents the hue value of the layer.
       - "S" represents the saturation value of the layer.
       - "L" represents the lightness value of the layer.
@@ -210,6 +209,13 @@ Palette composed of BambuLab filaments, with 0.10mm layers :  [filament-palette-
       "L": 64.1
     },
 ```
+or enter the hexcode for each layer in the palette.
+```
+    "2": {
+      "hexcode": "#48C5FF"
+    },
+```
+
 ## Recommended parameters for a 0.2mm nozzle (default)
 ``` 
 java -jar PIXEstL.jar -p filament-palette-0.10mm.json -i ...
