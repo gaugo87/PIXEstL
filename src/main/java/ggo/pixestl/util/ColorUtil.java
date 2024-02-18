@@ -223,6 +223,22 @@ public class ColorUtil {
         return new double[]{x * 100, y * 100, z * 100};
     }
 
+    public static Color hexToColor(String hexColor)
+    {
+        if (hexColor.startsWith("#") && hexColor.length() == 7) {
+            try {
+                int r = Integer.parseInt(hexColor.substring(1, 3), 16);
+                int g = Integer.parseInt(hexColor.substring(3, 5), 16);
+                int b = Integer.parseInt(hexColor.substring(5, 7), 16);
+                return new Color(r, g, b);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Incorrect color format : " + hexColor);
+            }
+        } else {
+            throw new IllegalArgumentException("Incorrect color format : " + hexColor);
+        }
+    }
+
     public static double[] xyzToLab(double x, double y, double z) {
         x /=  95.047;
         y /= 100.000;

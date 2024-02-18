@@ -63,10 +63,21 @@ public class Palette
 	            	nbLayers= Math.max(nbLayers, nbL);
 	            	int layer = Integer.parseInt(layerKey);
 	                JSONObject subObject = layersObject.getJSONObject(layerKey);
-	                double h = subObject.getInt("H");
-	                double s = subObject.getInt("S");
-	                double l = subObject.getDouble("L");
-	                colorLayerList.add(new ColorLayer(hexColor, layer ,h,s,l));
+					double h,s,l;
+					if (subObject.has("hexcode"))
+					{
+						String hexCode=subObject.getString("hexcode");
+						Color c = ColorUtil.hexToColor(hexCode);
+						double[] hsl =ColorUtil.colorToHSL(c);
+						h=hsl[0];s=hsl[1];l=hsl[2];
+					}
+					else {
+						h = subObject.getInt("H");
+						s = subObject.getInt("S");
+						l = subObject.getDouble("L");
+					}
+					colorLayerList.add(new ColorLayer(hexColor, layer ,h,s,l));
+
 	            }
 				if (!hexColorList.contains(hexColor)) hexColorList.add(hexColor);
             }
