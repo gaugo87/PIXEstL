@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ggo</groupId>
 	<artifactId>pixestl</artifactId>
-	<version>0.3.0</version>
+	<version>0.4.0</version>
 	<packaging>jar</packaging>
 	<name>PIXEstL</name>
 	<url>http://maven.apache.org</url>
