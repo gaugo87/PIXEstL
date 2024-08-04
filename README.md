@@ -264,6 +264,37 @@ Example :
 - Go to the "Objects" tab and associate the layers with the color filaments  
   ![](attachment/bambu_color_selection.png)
 
+## Slicing procedure for a print in 7 colors with only an AMS
+
+Generate the lithophane in "7 colors with an AMS" mode.
+``` 
+java -jar PIXEstL.jar -p filament-palette-0.10mm.json ... -c 4 -l 4
+``` 
+Follow the instructions described in the section [Slicing procedure](##Slicing procedure).
+Open the file "instructions.txt" to identify the filament changes to be made at the indicated layer.
+Ex: 
+``` 
+Layer[0.0] :Cyan[PLA Basic], Magenta[PLA Basic], Yellow[PLA Basic], White[PLA Basic]
+Layer[0.7] :Cyan[PLA Basic]-->Matte Ice Blue[PLA Matte], Magenta[PLA Basic]-->Beige[PLA Basic], Yellow[PLA Basic]-->Matte Sakura Pink[PLA Matte]
+``` 
+In this example, and because my layer heights are 0.1mm, the filament changes occur at layer 7.
+At layer 7, you will need to change:
+- The "Cyan" filament to "Matte Ice Blue."
+- The "Magenta" filament to "Beige."
+- The "Yellow" filament to "Matte Sakura Pink."
+
+
+Two things need to be done in the slicer to prepare for the filament change:
+- Modify the filament sequence to force the printer to use white at layer 7.
+
+  ![](attachment/sequence_1.png) ![](attachment/sequence_2.png)
+- Add a pause at layer 7.
+
+  ![](attachment/pause.png)
+
+During printing, once the pause is triggered, do the filament changes as indicated in the "instructions.txt" file.
+If a color filament is "stuck," change all the filaments you can, then resume the print, and change the filament once the printer switches to the white filament (Thanks to the modification of the sequence at layer 7, the printer should immediately load the white filament and thus release the last blocked filament).
+
 ## Binary generation
 ### Prerequisites
 - Java JDK (ex: https://www.oracle.com/fr/java/technologies/downloads/)

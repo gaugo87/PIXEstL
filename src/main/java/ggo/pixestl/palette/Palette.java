@@ -258,7 +258,7 @@ public class Palette
 
 		List<List<String> > hexColorGroup = new ArrayList<>();
 
-		for (int i=0;i<nbColorPool;i++) hexColorGroup.add(new ArrayList<>());
+		for (int i=0;i<nbGroup;i++) hexColorGroup.add(new ArrayList<>());
 
 		for (int i=0;i<nbGroup;i++)
 		{
@@ -276,8 +276,6 @@ public class Palette
 			colorCombiListList.add(curColorCombiList);
 		}
 
-		Collections.reverse(colorCombiListList);
-
 		List<List<ColorCombi>> tempColorCombiListList = new ArrayList<>();
 		tempColorCombiListList.add(colorCombiListList.get(0));
 		for(int i=0;i<nbGroup-1;i++)
@@ -285,7 +283,6 @@ public class Palette
 			List<ColorCombi> tempColorCombiList = new ArrayList<>();
 			for (ColorCombi cI : tempColorCombiListList.get(i))
 			{
-				if (nbGroup>1) cI.addLayer(new ColorLayer("#FFFFFF",1,0,0,100));
 				for (ColorCombi cI1 : colorCombiListList.get(i+1)) {
 					tempColorCombiList.add(cI.combineLithoColorCombi(cI1));
 				}
@@ -303,8 +300,43 @@ public class Palette
 			quantizedColors.put(c.getColor(genInstruction),c);
 		}
 
+		optimizeWhiteLayer(nbColorPool);
+
 		initHexColorGroupList(hexColorGroup,nbColorPool);
 
+	}
+
+	void optimizeWhiteLayer(int nbColorPool)
+	{
+		for (Color c : quantizedColors.keySet())
+		{
+			ColorCombi cc = quantizedColors.get(c);
+			List<ColorLayer> bottomLayerList = new ArrayList<>();
+			List<ColorLayer> middleLayerList = new ArrayList<>();
+			List<ColorLayer> topLayerList = new ArrayList<>();
+			int l = 0;
+			for (ColorLayer cL : cc.getLayers())
+			{
+				if(cL.getHexCode().equals("#FFFFFF"))
+				{
+					if (l<=nbColorPool)
+					{
+						bottomLayerList.add(cL);
+					}
+					else {
+						topLayerList.add(cL);
+					}
+				}
+				else {
+					middleLayerList.add(cL);
+				}
+				l+=cL.getLayer();
+			}
+			cc.getLayers().clear();
+			cc.getLayers().addAll(bottomLayerList);
+			cc.getLayers().addAll(middleLayerList);
+			cc.getLayers().addAll(topLayerList);
+		}
 	}
 
 	private void initHexColorGroupList(List<List<String> > hexColorGroup,int nbColorPool)
@@ -321,8 +353,6 @@ public class Palette
 			{
 				if (i>=groupLayer.size()) continue;
 				hexColorGroupList.get(i).add(groupLayer.get(i));
-				Collections.reverse(hexColorGroupList.get(i));
-
 			}
 		}
 

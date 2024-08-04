@@ -278,10 +278,10 @@ public class ColorUtil {
             Color c1 = Color.decode(s1);
             Color c2 = Color.decode(s2);
 
-            double k1 = ColorUtil.colorToCMYK(c1)[3];
-            double k2 = ColorUtil.colorToCMYK(c2)[3];
+            double e1 = c1.getBlue()+ c1.getGreen()+c1.getRed();
+            double e2 = c2.getBlue()+c2.getGreen()+c2.getRed();
 
-            return Double.compare(k2, k1);
+            return Double.compare(e1, e2);
         }
     }
 

@@ -72,8 +72,6 @@ public class ColorCombi {
 			if (genInstruction.isDebug()) {
 				System.out.print(lithoColorLayer.getHexCode() + "[" + lithoColorLayer.getLayer() + "]");
 			}
-			if (lithoColorLayer.getC()+lithoColorLayer.getM()+lithoColorLayer.getY() == 0
-				&& c+m+y==0) continue;
 			c+=lithoColorLayer.getC();	
 			m+=lithoColorLayer.getM();
 			y+=lithoColorLayer.getY();
