@@ -292,7 +292,7 @@ public class Palette
 		List<ColorCombi> finalCombiList =tempColorCombiListList.get(tempColorCombiListList.size()-1);
 
 
-		layerCount=nbLayers * nbGroup+((nbGroup>1)?1:0);
+		layerCount=nbLayers * nbGroup;
 
 		for (ColorCombi c : finalCombiList)
 		{
